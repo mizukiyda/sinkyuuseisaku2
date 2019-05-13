@@ -30,6 +30,7 @@ int Enemy_Dpct() {
 	*/
 	return 0;
 }
+
 int Enemy_Move() {
 	return 0;
 

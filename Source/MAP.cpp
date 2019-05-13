@@ -81,14 +81,14 @@ int MAP_Init() {
 	ImageLoad = LoadGraph("Image/Load.png");
 	ImageGoal = LoadGraph("Image/Goal.png");
 
-	strcpy(MAPHandle, "Map/map");
+//	strcpy(MAPHandle, "Map/map");
 	
 
 
 	char Handletmp[256];
 
 	char flagtmp[256];
-	sprintf(flagtmp, "%d", Handleflag);
+	//sprintf(flagtmp, "%d", Handleflag);
 
 
 
@@ -97,11 +97,11 @@ int MAP_Init() {
 	flagtmp[0] = Handleflag + '0';
 	flagtmp[1] = NULL;
 	*/
-	strcpy(Handletmp, MAPHandle);
+//	strcpy(Handletmp, MAPHandle);
 
-	strcat(Handletmp, flagtmp);
+//	strcat(Handletmp, flagtmp);
 
-	strcat(Handletmp, ".xlsx");
+//	strcat(Handletmp, ".xlsx");
 
 	// MAPの読み込み
 	FileHandle = FileRead_open( Handletmp );	// 一行読み込み
@@ -131,11 +131,11 @@ int MAP_Init() {
 	}
 
 	// ファイルを閉じる
-	FileRead_close(FileHandle);
+	//FileRead_close(FileHandle);
 
-	strcpy(Handletmp, MAPHandle);
+	//strcpy(Handletmp, MAPHandle);
 
-	strcat(Handletmp, flagtmp);
+	//strcat(Handletmp, flagtmp);
 
 	//strcat(Handletmp, ".txt");
 

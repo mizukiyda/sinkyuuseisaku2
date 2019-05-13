@@ -6,7 +6,7 @@ typedef struct {	//構造体
 	char name[256];     //項目名の変数
 } MenuElement_t;
 
-/*
+
 typedef struct {	//画像入れたらコメントアウト解除
 	
 	int Start;
@@ -21,7 +21,7 @@ typedef struct {	//画像入れたらコメントアウト解除
 	int On_Number[10];
 
 } Image_t;
-*/
+
 extern int StartMenu_Init();
 extern int StartMenu_Dpct();
 extern int StartMenu_Draw();

@@ -13,8 +13,6 @@ static E_Scene n_Sceneflag = E_Scene_None;			//次のシーン
 
 static void Scene_Mgr_Init_Module(E_Scene scene);	//指定モジュールを初期化する
 static void Scene_Mgr_End_Module(E_Scene scene);	//指定モジュールの終了処理を行う
-
-
 													//init 初期化
 void Scene_Mgr_Init() {
 	Scene_Mgr_Init_Module(Sceneflag);
@@ -38,12 +36,12 @@ void Scene_Mgr_Dpct() {
 	case E_Scene_Game:
 		//ゲーム画面		
 		MAP_Dpct();
-	    //Enemy_Dpct();
+	    Enemy_Move();
 		Player_Dpct();
 		break;
 
 	case E_Scene_Result:
-		//Result_Dpct();
+		Result_Dpct();
 		break;
 
 	case E_Scene_GameMenu:
