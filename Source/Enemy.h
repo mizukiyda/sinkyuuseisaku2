@@ -35,7 +35,7 @@ typedef enum {
 
 } E_Drct;  //Drct = Direction(向き)
 
- //オブジェクトの当たり判定用
+		   //オブジェクトの当たり判定用
 typedef enum {
 
 	E_Object_Load,      //歩ける場所      -> 0
