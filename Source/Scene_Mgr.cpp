@@ -64,7 +64,7 @@ void Scene_Mgr_Draw() {
 		//ƒQ[ƒ€‰æ–Ê
 		MAP_Draw();
 		Enemy_Draw();
-		//Player_Draw();
+		Player_Draw();
 		DrawFormatString(0, 00, GetColor(255, 255, 255), "ƒQ[ƒ€‰æ–Ê");
 		break;
 	case E_Scene_Result:
@@ -96,7 +96,7 @@ static void Scene_Mgr_Init_Module(E_Scene scene) {
 	case E_Scene_Game:
 		//ƒQ[ƒ€‰æ–Ê
 		Enemy_Init();
-		//Player_Init();
+		Player_Init();
 		MAP_Init();
 		break;
 	case E_Scene_Result:
@@ -118,7 +118,7 @@ static void Scene_Mgr_End_Module(E_Scene scene) {
 	case E_Scene_Game:
 		//ƒQ[ƒ€‰æ–Ê
 		Enemy_End();
-		//Player_End();
+		Player_End();
 		MAP_End();
 		break;
 	case E_Scene_Result:
