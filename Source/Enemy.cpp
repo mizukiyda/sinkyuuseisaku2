@@ -64,13 +64,13 @@ int Enemy_MapDeta(int x, int y) {
 int Enemy_Dpct(int num) {
 
 	//毎回Playerの座標が更新するため
-	player_x = ;						//playerのx座標を入れるための変数
-	player_y = ;						//playerのy座標を入れるための変数
+	player_x = 0;						//playerのx座標を入れるための変数
+	player_y = 0;						//playerのy座標を入れるための変数
 
 	enemy[num].ex = enemy[num].x;		//enemyの弾をEnemyのx座標に格納する
 	enemy[num].ey = enemy[num].y;		//enemyの弾をEnemyのy座標に格納する
 
-	Enemy_Hit_Flg = ;								//playerからもらったフラグを入れる変数
+	Enemy_Hit_Flg = 0;								//playerからもらったフラグを入れる変数
 
 	if (Enemy_Hit_Flg == true) {					//もし当たったなら				
 		Enemy_Hit();							//生きている状態をOFFにする

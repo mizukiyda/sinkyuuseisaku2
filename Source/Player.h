@@ -1,6 +1,11 @@
 #ifndef PLAYER_DEFENCE
 #define PLAYER_DEFENCE
 
+extern int Player_Init();
+extern int Player_Dpct();
+extern int Player_Draw();
+extern int Player_End();
+
 typedef struct {
 	int x;		//現在位置
 	int y;		//現在位置
@@ -8,13 +13,15 @@ typedef struct {
 	int ny;		//移動先
 }P_PLAYER;	//Pos_Player
 
-typedef struct {
-	bool RIGHT;
-	bool LEFT;
-	bool UP;
-	bool DOWN;
-	bool NONE;
-}P_DRCT;	//プレイヤーの向き  Player_Direction
+/*typedef enum {
+
+	E_Drct_Up,     //上
+	E_Drct_Right,  //右
+	E_Drct_Down,   //下
+	E_Drct_Left,   //左
+
+	E_Drct_None
+} E_Drct;  //Drct = Direction(向き)*/
 	
 typedef enum {
 	P_Object_Wall,      //行けない場所

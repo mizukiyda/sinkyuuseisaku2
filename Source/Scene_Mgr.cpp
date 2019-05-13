@@ -38,12 +38,12 @@ void Scene_Mgr_Dpct() {
 	case E_Scene_Game:
 		//ÉQÅ[ÉÄâÊñ 		
 		MAP_Dpct();
-	    Enemy_Dpct();
-		//Player_Dpct();
+	    //Enemy_Dpct();
+		Player_Dpct();
 		break;
 
 	case E_Scene_Result:
-		Result_Dpct();
+		//Result_Dpct();
 		break;
 
 	case E_Scene_GameMenu:

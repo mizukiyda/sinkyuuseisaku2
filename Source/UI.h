@@ -2,7 +2,6 @@
 
 #ifndef INCLUDE_UI
 #define INCLUDE_UI
-#include "Player.h"
 #endif
 
 //UI系関数を使う為のプロトタイプ宣言
@@ -12,8 +11,8 @@ extern int UI_Draw();
 extern int UI_End();
 
 //プレイヤー・箱を動かすときに呼び出す
-extern int UI_Player_Move_History(E_Drct Drct);
-extern int UI_Box_Move_History(E_Drct Drct,int num);
+extern int UI_Player_Move_History();
+extern int UI_Box_Move_History();
 extern int UI_StepCount_MoveOn();
 
 //歩数カウントの提示
@@ -22,7 +21,7 @@ int UI_StepCount();
 
 //履歴保存用構造体
 typedef struct {
-	E_Drct Player_Drct;
-	E_Drct Box_Drct;
+	//E_Drct Player_Drct;
+	//E_Drct Box_Drct;
 	int Boxnum;
 }S_History;
