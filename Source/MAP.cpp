@@ -1,27 +1,30 @@
 // マップ表示基本
 #include "DxLib.h"
 #include "MAP.h"
-#include "Player.h"
 #include "Enemy.h"
+#include "Player.h"
 #include "Scene_Mgr.h"
-#include "Keyboard.h"
+#include"string.h"
+#include"stdio.h"
+
 int FileHandle, y;
 static int i = 0, j = 0;
 char buf[256];
-char c1, c2;				    //MAPとPlayer,Enemyに使うchar
-int MAP[MAP_HEIGHT][MAP_WIDTH]; //マップ
-int px, py;				    	//受け取るプレイヤーの変数
-int Enemy_Count;				//受け取るEnemyの変数;
-static int Enemy_Pos_x[10];		//受け取るEnemyのx座標変数
-static int Enemy_Pos_y[10];		//受け取るEnemyのy座標変数
+char c1, c2;				//MAPとPlayer,Boxに使うchar
+int MAP[MAP_HEIGHT][MAP_WIDTH];  //マップ
+int px, py;					//受け取るプレイヤーの変数
+int Box_Count;				//受け取るBoxの変数;
+static int Box_Pos_x[10];		//受け取るBoxのx座標変数
+static int Box_Pos_y[10];		//受け取るBoxのy座標変数
 int lflag;
 
-int Image_Wall = 0;			// 壁
-int Image_Load = 0;			// 地面、道
-int Image_Goal = 0;			// ゴール
+int ImageWall = 0;
+int ImageLoad = 0;
+int ImageGoal = 0;
 
-char MAPHandle[256];		// 結果的にマップ名になる変数
-int Handleflag = 1;			// 何面を開くか
+char MAPHandle[256];
+int Handleflag = 1;
+
 
 //10はdefineかconstで定義すべき
 //むしろ構造体を共通すべき
@@ -40,54 +43,65 @@ int MAP_Player_Pos_Init_y() {
 }
 
 //MAPの座標
-int MAP_Data(int x, int y) {	
+int MAP_Data(int x, int y) {
 
 	return MAP[y][x];
 }
 
-//Enemyの個数を受け取る
-int MAP_Enemy_Count_Init() {
+//Boxの個数を受け取る
+int MAP_Box_Count_Init() {
 
-	return Enemy_Count;
+	return Box_Count;
 }
 
-//Enemyの初期X座標
-int MAP_Enemy_Pos_Init_x(int num) {
+//Boxの初期X座標
+int MAP_Box_Pos_Init_x(int num) {
 
-	return Enemy_Pos_x[num];
+	return Box_Pos_x[num];
 }
 
-//Enemyの初期Y座標
-int MAP_Enemy_Pos_Init_y(int num) {
+//Boxの初期Y座標
+int MAP_Box_Pos_Init_y(int num) {
 
-	return Enemy_Pos_y[num];
+	return Box_Pos_y[num];
 }
 
 //初期化
 int MAP_Init() {
 	memset(MAP, -1, sizeof(MAP));
-	Enemy_Count = 1;	//受け取ったEnemyの数の初期化
+//	px = px;			//受け取ったプレイヤーのx座標を初期化
+//	py = py;			//受け取ったプレイヤーのy座標を初期化
+	Box_Count = 1;	//受け取ったBoxの数の初期化
+//	Box_Pos_x = 5;	//受け取ったBoxのx座標の初期化
+//	Box_Pos_y = 5;	//受け取ったBoxのy座標の初期化
 	i = 0; j = 0;
 
 	//画像の読み込み
-	Image_Wall = LoadGraph("resource/Image/Player.png");	// 壁の画像とパス
-	Image_Load = LoadGraph("resource/Image/Player.png");	// 地面の画像とパス
-	Image_Goal = LoadGraph("resource/Image/Player.png");	// ゴールの画像とパス
+	ImageWall = LoadGraph("Image/Wall.png");
+	ImageLoad = LoadGraph("Image/Load.png");
+	ImageGoal = LoadGraph("Image/Goal.png");
+
+	strcpy(MAPHandle, "Map/map");
 	
-	char Handletmp[256];	// 結果的にこの名前のパスでファイルを開く
-	char flagtmp[256];		// MAP_〇…〇の部分
 
-	strcpy_s(MAPHandle, "resauce/MAP/MAP_");	// MAPHandleに固定文をコピー
 
-	sprintf_s(flagtmp, "%d", Handleflag);		// falgtmpにMAP_SetHandleflagから数字を入れる
+	char Handletmp[256];
 
-	strcpy_s(Handletmp, MAPHandle);			    // MAPHandleにコピーしたのをコピー
+	char flagtmp[256];
+	sprintf(flagtmp, "%d", Handleflag);
 
-	strcat_s(Handletmp, flagtmp);				// flagtmpにコピーしたのをコピー
 
-	strcat_s(Handletmp, ".csv");				// 最後に.csvをコピー
 
-	// resauce/MAP/MAP_ / %d / .csv	で区画分けしている
+	/*
+	char flagtmp[64];	//突貫 合計１０（９）マップまで
+	flagtmp[0] = Handleflag + '0';
+	flagtmp[1] = NULL;
+	*/
+	strcpy(Handletmp, MAPHandle);
+
+	strcat(Handletmp, flagtmp);
+
+	strcat(Handletmp, ".xlsx");
 
 	// MAPの読み込み
 	FileHandle = FileRead_open( Handletmp );	// 一行読み込み
@@ -97,6 +111,7 @@ int MAP_Init() {
 //		WaitKey();
 		Scene_Mgr_ChangeScene(E_Scene_StartMenu);
 		return -1;
+
 	}
 
 	while (FileRead_eof(FileHandle) == 0) {			// 一行読み込み
@@ -113,29 +128,31 @@ int MAP_Init() {
 			j = 0;							//右に行くのをやめる
 			i++;							//次の行に行く
 		}
-	} 
+	}
 
 	// ファイルを閉じる
 	FileRead_close(FileHandle);
 
-	// PlayerとEnemyの読み込み
-	strcpy_s(Handletmp, MAPHandle);
+	strcpy(Handletmp, MAPHandle);
 
-	strcat_s(Handletmp, flagtmp);
+	strcat(Handletmp, flagtmp);
 
-	strcat_s(Handletmp, ".txt");
+	//strcat(Handletmp, ".txt");
+
 
 	
 	// Playerの座標読み込み
 	FileHandle = FileRead_open( Handletmp );	//1行読み込み
 													// ファイルの終端が来るまで表示する
 	if (FileHandle == 0) {
+
 //		WaitKey();
 		Scene_Mgr_ChangeScene(E_Scene_StartMenu);
 		return -1;
+
 	}
 
-	//c2 = PlayerとEnemyのchar
+	//c2 = PlayerとBoxのchar
 	
 	c2 = FileRead_getc(FileHandle);		//1文字読み込む	
 	px = c2 - '0';				    //PlayerのX座標に代入
@@ -148,7 +165,7 @@ int MAP_Init() {
 	FileRead_getc(FileHandle);
 
 	
-	Enemy_Count = 0;
+	Box_Count = 0;
 
 	
 	while (1) {
@@ -156,17 +173,18 @@ int MAP_Init() {
 		if (c2 == EOF)break;
 		c2 = FileRead_getc(FileHandle);
 		if (c2 == EOF)break;
-		Enemy_Pos_x[Enemy_Count] = c2 - '0';
+		Box_Pos_x[Box_Count] = c2 - '0';;
 		
 		FileRead_getc(FileHandle);
 		if (c2 == EOF)break;
 		c2 = FileRead_getc(FileHandle);
 		if (c2 == EOF)break;
-		Enemy_Pos_y[Enemy_Count] = c2 - '0';
+		Box_Pos_y[Box_Count] = c2 - '0';;
 		FileRead_getc(FileHandle);
 		if (c2 == EOF)break;
-		Enemy_Count++;
+		Box_Count++;
 	}
+	
 	
 	// ファイルを閉じる
 	FileRead_close(FileHandle);
@@ -180,9 +198,7 @@ int MAP_Init() {
 //計算
 int MAP_Dpct() {
 	//Dpctは毎フレーム呼ばれる
-	if (Keyboard_Get(KEY_INPUT_SPACE) == 1) {	//座標が80になっている項目でスペースキーを押すと
-		Scene_Mgr_ChangeScene(E_Scene_Result);
-	}
+
 	return 0;
 }
 
@@ -190,28 +206,35 @@ int MAP_Dpct() {
 //描写
 int MAP_Draw() {
 	//こっちも毎フレーム呼ばれるが計算とは別に書きます
-	
+
 	// マップを描く
 	for (i = 0; i < MAP_HEIGHT; i++)
 	{
 		for (j = 0; j < MAP_WIDTH; j++)
 		{
-			if (MAP[i][j] == P_Object_Wall)		// 壁の描画処理
+			if (MAP[i][j] == P_Object_Wall)
 			{
-				DrawGraph(i * MAP_SIZE, j * MAP_SIZE, Image_Wall, TRUE);
+				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(0, 230, 0), TRUE);
+
+				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, ImageWall, TRUE);
+
 			}
-			if (MAP[i][j] == P_Object_Load)		// 床の描画処理
+			if (MAP[i][j] == P_Object_Load)
 			{
-				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, Image_Load, TRUE);
+				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(122, 255, 122), TRUE);
+			
+				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, ImageLoad, TRUE);
+				
 			}
-			if (MAP[i][j] == P_Object_Goal)		// ゴールの描画処理
+			if (MAP[i][j] == P_Object_Goal)
 			{
-				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, Image_Goal, TRUE);
+				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(122, 122, 255), TRUE);
+
+				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, ImageGoal, TRUE);
 			}
 		}
 	}
-
-	DrawFormatString(100, 200, GetColor(255, 255, 255), "MAP Draw動いてるよん");
+	//DrawFormatString(100, 200, GetColor(255, 0, 0), "MAP Draw動いてるよん");
 	return 0;
 }
 
@@ -226,9 +249,9 @@ int MAP_GetHandleflag() {
 
 //終了
 int MAP_End() {
-	DeleteGraph(Image_Wall);
-	DeleteGraph(Image_Load);
-	DeleteGraph(Image_Goal);
+	DeleteGraph(ImageWall);
+	DeleteGraph(ImageLoad);
+	DeleteGraph(ImageGoal);
 
 	return 0;
 }

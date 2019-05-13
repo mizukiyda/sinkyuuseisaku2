@@ -14,11 +14,11 @@ E_Drct drct;
 
 int Player_Init() {
 
-	player.x = 100;
-	player.y = 100;
+	player.x = 200;
+	player.y = 200;
 
 	Gyallaly[12] = {};
-	LoadDivGraph("Images/Player.png", 12, 3, 4, 64, 64, Gyallaly);  //配列「Gyallaly」へ画像を入れる
+	LoadDivGraph("Image/Player.png", 12, 3, 4, 64, 64, Gyallaly);  //配列「Gyallaly」へ画像を入れる
 
 	return 0;
 }
@@ -54,7 +54,10 @@ int Player_Dpct() {
 
 int Player_Draw() {
 
-	DrawGraph(player.x, player.y, Gyallaly[0],true);
+	DrawGraph(player.x * 64, player.y * 64, Gyallaly[7],true);
+	DrawFormatString(700, 20, GetColor(255, 0, 0), "0:上 1:右 2:下 3:左 4:通常");
+	DrawFormatString(700, 40, GetColor(255, 0, 0), "Drct:%d", drct);
+
 	return 0;
 }
 

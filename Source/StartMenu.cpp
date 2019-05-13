@@ -8,7 +8,7 @@ MenuElement_t MenuElement[2] = {
 { 100, 200, "ゲーム終了" },
 };
 
-//Image_t Image;	//画像入れたらコメントアウト解除
+Image_t Image;	//画像入れたらコメントアウト解除
 
 static int SelectNum;	//選択してる番号
 
@@ -17,12 +17,12 @@ int StartMenu_Init() {
 	
 	 SelectNum = 0; // 現在の選択番号
 
-	/*//画像入れたらコメントアウト解除
+	//画像入れたらコメントアウト解除
 	 Image.Start = LoadGraph("Image/Start.png");
     Image.On_Start = LoadGraph("Image/Start2.png");
 	 Image.End = LoadGraph("Image/End.png");
 	 Image.On_End = LoadGraph("Image/End2.png");
-	 */
+	 
 	return 0;
 }
 
