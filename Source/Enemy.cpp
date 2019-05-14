@@ -11,7 +11,7 @@ int Enemydeath;          //“G‚Ì‰æ‘œ‚Ì•Ï”(€)
 
 
 int Enemy_Init() {
-	Enemyalive=LoadGraph("Resource/Image/Enemy.png");
+	Enemyalive=LoadGraph("Resource/Image/Enemyalive.png");
 	Enemydeath=LoadGraph("Resource/Image/Enemydeath.png");
 	return 0;
 }
