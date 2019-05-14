@@ -12,16 +12,6 @@ typedef struct {
 	int nx;		//ˆÚ“®æ
 	int ny;		//ˆÚ“®æ
 }P_PLAYER;	//Pos_Player
-
-/*typedef enum {
-
-	E_Drct_Up,     //ã
-	E_Drct_Right,  //‰E
-	E_Drct_Down,   //‰º
-	E_Drct_Left,   //¶
-
-	E_Drct_None
-} E_Drct;  //Drct = Direction(Œü‚«)*/
 	
 typedef enum {
 	P_Object_Wall,      //s‚¯‚È‚¢êŠ

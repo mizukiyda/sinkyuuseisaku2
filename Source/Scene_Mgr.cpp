@@ -1,12 +1,10 @@
 #include "DxLib.h"
 #include "Scene_Mgr.h"
 #include "StartMenu.h"
-#include "Result.h"
 #include "Player.h"
 #include "Enemy.h"
 #include "MAP.h"
-//#include "UI.h"
-//#include "Sound.h"
+#include "UI.h"
 
 static E_Scene Sceneflag = E_Scene_StartMenu;		//今のシーン
 static E_Scene n_Sceneflag = E_Scene_None;			//次のシーン
@@ -36,12 +34,10 @@ void Scene_Mgr_Dpct() {
 	case E_Scene_Game:
 		//ゲーム画面		
 		MAP_Dpct();
-	    Enemy_Move();
+	    Enemy_Dpct();
 		Player_Dpct();
-		break;
+		UI_Dpct();
 
-	case E_Scene_Result:
-		Result_Dpct();
 		break;
 
 	case E_Scene_GameMenu:
@@ -56,17 +52,15 @@ void Scene_Mgr_Draw() {
 	case E_Scene_StartMenu:
 		//スタートメニュー
 		StartMenu_Draw();
-		DrawFormatString(0, 00, GetColor(255, 255, 255), "スタートメニュー");
 		break;
 	case E_Scene_Game:
 		//ゲーム画面
 		MAP_Draw();
 		Enemy_Draw();
 		Player_Draw();
-		DrawFormatString(0, 00, GetColor(255, 255, 255), "ゲーム画面");
+		UI_Draw();
 		break;
-	case E_Scene_Result:
-		Result_Draw();
+	
 		break;
 	case E_Scene_GameMenu:
 		//ゲームメニュー
@@ -96,10 +90,9 @@ static void Scene_Mgr_Init_Module(E_Scene scene) {
 		Enemy_Init();
 		Player_Init();
 		MAP_Init();
+		UI_Init();
 		break;
-	case E_Scene_Result:
-		Result_Init();
-		break;
+
 	case E_Scene_GameMenu:
 		//ゲームメニュー
 		break;
@@ -118,10 +111,8 @@ static void Scene_Mgr_End_Module(E_Scene scene) {
 		Enemy_End();
 		Player_End();
 		MAP_End();
-		break;
-	case E_Scene_Result:
-		Result_End();
-		break;
+		UI_End();
+
 	case E_Scene_GameMenu:
 		//ゲームメニュー
 		break;
