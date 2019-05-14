@@ -7,19 +7,22 @@
 //ループ用
 static int i, j, k;
 
-int Gyallaly[12];    //プレイヤー画像の変数(今回は12分割なので12)
-int Player;
-P_PLAYER player;
+//Playerの画像
+int Player[12];    //プレイヤー画像の変数(今回は12分割なので12)
+
+//Playerの構造体関係
+P_PLAYER player;	
 E_Drct drct;
 
 int Player_Init() {
 
-	player.x = 50;
-	player.y = 50;
+	//Playerの初期位置
+	player.x = 100;
+	player.y = 150;
 
-	Gyallaly[12] = {};
-	LoadDivGraph("Resource/Image/Player.png", 12, 3, 4, 64, 64, Gyallaly);  //配列「Gyallaly」へ画像を入れる
-	Player = LoadGraph("Resource/Image/END.png");
+	//画像の取得
+	Player[12] = {};
+	LoadDivGraph("Resource/Image/Player.png", 12, 3, 4, 200, 200,Player);  //配列「Player」へ画像を入れる
 	return 0;
 }
 
@@ -54,10 +57,36 @@ int Player_Dpct() {
 
 int Player_Draw() {
 
-	DrawGraph(player.x * 64, player.y * 64, Gyallaly[7],true);
-	DrawFormatString(700, 20, GetColor(255, 0, 0), "0:上 1:右 2:下 3:左 4:通常");
-	DrawFormatString(700, 40, GetColor(255, 0, 0), "Drct:%d", drct);
+	//Playerの表示
+	//上
+	if (drct == E_Drct_Up)
+	{
+		DrawGraph(player.x, player.y, Player[0], TRUE);
+	}
+	//左
+	if (drct == E_Drct_Left)
+	{
+		DrawGraph(player.x, player.y, Player[9], TRUE);
 	
+	}
+	//下
+	if (drct == E_Drct_Down)
+	{
+		DrawGraph(player.x , player.y, Player[6], TRUE);
+		
+	}
+	//右
+	if (drct == E_Drct_Right)
+	{
+		DrawGraph(player.x , player.y, Player[3], TRUE);
+		
+	}
+
+	//デバッグ用処理
+	DrawFormatString(700, 20, GetColor(255, 0, 0), "1:上 2:右 3:下 4:左");
+	DrawFormatString(700, 40, GetColor(255, 0, 0), "Drct:%d", drct);
+	DrawFormatString(700, 60, GetColor(255, 0, 0), "x = %d  \n y = %d", player.x,player.y);
+
 
 	return 0;
 }

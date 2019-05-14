@@ -1,5 +1,4 @@
-#ifndef PLAYER_DEFENCE
-#define PLAYER_DEFENCE
+
 
 extern int Player_Init();
 extern int Player_Dpct();
@@ -9,8 +8,7 @@ extern int Player_End();
 typedef struct {
 	int x;		//Œ»İˆÊ’u
 	int y;		//Œ»İˆÊ’u
-	int nx;		//ˆÚ“®æ
-	int ny;		//ˆÚ“®æ
+
 }P_PLAYER;	//Pos_Player
 	
 typedef enum {
@@ -20,4 +18,3 @@ typedef enum {
 }P_Object;	//•¨‘Ì
 
 
-#endif 
