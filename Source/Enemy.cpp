@@ -18,10 +18,7 @@ int Enemy_Init() {
 
 int Enemy_Dpct() {
 
-	if(Keyboard_Get(KEY_INPUT_UP) == 1)   //ª
-	{
-		DrawFormatString(100, 200, GetColor(255, 0, 0), "“®‚¢‚Ä‚é‚æ‚ñ");
-	}
+	
 	return 0;
 }
 

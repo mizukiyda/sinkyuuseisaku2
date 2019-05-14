@@ -87,8 +87,8 @@ static void Scene_Mgr_Init_Module(E_Scene scene) {
 		break;
 	case E_Scene_Game:
 		//ƒQ[ƒ€‰æ–Ê
-		Enemy_Init();
 		Player_Init();
+		Enemy_Init();
 		MAP_Init();
 		UI_Init();
 		break;

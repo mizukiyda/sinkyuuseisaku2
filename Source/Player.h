@@ -1,14 +1,19 @@
 
-
 extern int Player_Init();
 extern int Player_Dpct();
 extern int Player_Draw();
 extern int Player_End();
 
+extern int MAP_Player_Pos_Init_x();
+extern int MAP_Player_Pos_Init_y();
+
+extern int Player_Check();
+extern int Player_Move();
 typedef struct {
 	int x;		//åªç›à íu
 	int y;		//åªç›à íu
-
+	int nx;
+	int ny;
 }P_PLAYER;	//Pos_Player
 	
 typedef enum {
