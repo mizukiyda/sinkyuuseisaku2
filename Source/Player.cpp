@@ -100,6 +100,7 @@ int Player_Check() {
 
 int Player_Move() {
 
+	//Playerをヌルヌル動かす処理
 	switch (drct) {
 
 		//上
@@ -141,58 +142,48 @@ int Player_Move() {
 int Player_Draw() {
 
 	//Playerの表示
+
+	//止まっている状態
 	if (drct == E_Drct_Stop) {
 		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[None], TRUE);
 	}
 	
+	//Playerが歩いているように見せる処理
+	//上下
+	if (drct == E_Drct_Up || drct == E_Drct_Down)
+	{
+		Player_Animetion = count_y / 8 % 3;   //画像のアニメーション用の変数 y
+	}
+	//左右
+	if (drct == E_Drct_Right || drct == E_Drct_Left)
+	{
+		Player_Animetion = count_x / 8 % 3;   //画像のアニメーション用の変数 x
+	}
+
 	//上
 	if (drct == E_Drct_Up)
 	{
-		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[0], TRUE);
+		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[0 + Player_Animetion], TRUE);
 	}
 	//左
 	if (drct == E_Drct_Left)
 	{
-		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y,  Player[9], TRUE);
+		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y,  Player[9 + Player_Animetion], TRUE);
 	
 	}
 	//下
 	if (drct == E_Drct_Down)
 	{
-		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y,  Player[6], TRUE);
+		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y,  Player[6 + Player_Animetion], TRUE);
 		
 	}
 	//右
 	if (drct == E_Drct_Right)
 	{
-		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[3], TRUE);
+		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[3 + Player_Animetion], TRUE);
 		
 	}
 	
-	/*
-	if (drct == E_Drct_Up)
-	{
-		DrawGraph(player.x , player.y , Player[0], TRUE);
-	}
-	//左
-	if (drct == E_Drct_Left)
-	{
-		DrawGraph(player.x , player.y , Player[9], TRUE);
-
-	}
-	//下
-	if (drct == E_Drct_Down)
-	{
-		DrawGraph(player.x  , player.y  , Player[6], TRUE);
-
-	}
-	//右
-	if (drct == E_Drct_Right)
-	{
-		DrawGraph(player.x , player.y, Player[3], TRUE);
-
-	}
-	*/
 	//デバッグ用処理
 	DrawFormatString(700, 20, GetColor(255, 0, 0), "1:上 2:右 3:下 4:左");
 	DrawFormatString(700, 40, GetColor(255, 0, 0), "Drct:%d", drct);
