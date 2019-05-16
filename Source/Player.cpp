@@ -3,6 +3,7 @@
 #include"MAP.h"
 #include "Keyboard.h"
 #include"Enemy.h"
+#include"Scene_Mgr.h"
 
 //ループ用
 static int i, j, k;
@@ -73,6 +74,12 @@ int Player_Dpct() {
 		{
 			player.nx++;
 			drct = E_Drct_Right;
+		}
+
+		//エンターキーを押したらResultSceneへ（デバッグ用）
+		if (Keyboard_Get(KEY_INPUT_RETURN) == 1) //→
+		{
+			Scene_Mgr_ChangeScene(E_Scene_Result);
 		}
 
 		//Playerの移動先のチェック（壁か道か）
