@@ -28,7 +28,7 @@ int StartMenu_Init() {
 
 int StartMenu_Dpct() {
 	//ここで計算
-	//Dqctは毎フレーム呼ばれる
+	//Dpctは毎フレーム呼ばれる
 
 	if (Keyboard_Get(KEY_INPUT_UP) == 1) {
 		SelectNum = (SelectNum + sizeof(MenuElement) / sizeof*(MenuElement)-1) % 2;	// 現在の選択項目を一つ上にずらす

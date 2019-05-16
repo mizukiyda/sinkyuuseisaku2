@@ -13,12 +13,6 @@ typedef struct {	//画像入れたらコメントアウト解除
 	int On_Start;
 	int End;
 	int On_End;
-	int MAP;
-	int On_MAP;
-	int Back;
-	int On_Back;
-	int Number[10];
-	int On_Number[10];
 
 } Image_t;
 
