@@ -1,3 +1,5 @@
+#ifndef INCLUDE_PLAYER		//ヘッダファイルは多重インクルード防止のマクロを定義する
+#define INCLUDE_PLAYER
 
 extern int Player_Init();
 extern int Player_Dpct();
@@ -9,6 +11,7 @@ extern int MAP_Player_Pos_Init_y();
 
 extern int Player_Check();
 extern int Player_Move();
+
 typedef struct {
 	int x;		//現在位置
 	int y;		//現在位置
@@ -22,4 +25,4 @@ typedef enum {
 	P_Object_Goal,      //ゴール
 }P_Object;	//物体
 
-
+#endif

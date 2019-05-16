@@ -32,7 +32,7 @@ int Player_Init() {
 	//画像の取得
 	Player[12] = {};
 	LoadDivGraph("Resource/Image/Player.png", 12, 3, 4, 64, 64,Player);  //配列「Player」へ画像を入れる
-	None = 7;			//正面を向いている状態
+	None = 7;					//正面を向いている状態
 	Player_Animetion = 0;		//何もしていない状態
 
 	//移動
@@ -49,35 +49,35 @@ int Player_Dpct() {
 		//上
 		if (Keyboard_Get(KEY_INPUT_UP) == 1)   //↑
 		{
-			player.y--;
+			player.ny--;
 			drct = E_Drct_Up;
 		}
 		//左
 		if (Keyboard_Get(KEY_INPUT_LEFT) == 1)  //←
 		{
-			player.x--;
+			player.nx--;
 			drct = E_Drct_Left;
 		}
 		//下
 		if (Keyboard_Get(KEY_INPUT_DOWN) == 1)  //↓
 		{
-			player.y++;
+			player.ny++;
 			drct = E_Drct_Down;
 		}
 		//右
 		if (Keyboard_Get(KEY_INPUT_RIGHT) == 1) //→
 		{
-			player.x++;
+			player.nx++;
 			drct = E_Drct_Right;
 		}
 
 		//Playerの移動先のチェック（壁か道か）
-		if (drct != E_Drct_Stop)  //キーが入力されているなら
+		if (drct != E_Drct_Stop)	//キーが入力されているなら
 		{
 			Player_Check();
 		}
 		//移動させる
-		if (Move_Flg = true) {//移動先が道だった時
+		if (Move_Flg = true) {		//移動先が道だった時
 			Player_Move();
 		}
 	//}
@@ -86,7 +86,15 @@ int Player_Dpct() {
 
 int Player_Check() {
 
-
+	/*if (Map_Data(player.nx, player.ny) == P_Object_Load || Map_Data(player.nx, player.ny) == P_Object_Goal) {
+		Move_Flg = true;			//動く
+	}
+	
+	if (Map_Data(player.nx, player.ny) == P_Object_Wall) {
+		Move_Flg = false;
+		drct = E_Drct_Stop;
+	}*/
+	
 	return 0;
 }
 
@@ -111,15 +119,34 @@ int Player_Move() {
 		count_x++;
 		break;
 	}
-	return 0;
+
+	//count_xかcount_yのカウントが±64を達したなら　
+	if (count_x >= MAP_SIZE - 1 || count_y <= -MAP_SIZE + 1 || count_x <= -MAP_SIZE + 1 || count_y >= MAP_SIZE - 1)
+	{
+		//プレイヤーの座標に仮の座標を代入して座標を更新(描画の際に使うのはplayer.x,player.y)
+		player.y = player.ny;
+		player.x = player.nx;
+
+		//カウントの初期化
+		count_x = 0;
+		count_y = 0;
+
+		//フラグと向きの管理
+		Move_Flg = false;
+		drct = E_Drct_Stop;
+	}
+		return 0;
 }
 
 int Player_Draw() {
 
 	//Playerの表示
-	DrawGraph(player.x , player.y , Player[0], TRUE);
+	if (drct == E_Drct_Stop) {
+		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[None], TRUE);
+	}
+	
 	//上
-	/*if (drct == E_Drct_Up)
+	if (drct == E_Drct_Up)
 	{
 		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[0], TRUE);
 	}
@@ -141,9 +168,8 @@ int Player_Draw() {
 		DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[3], TRUE);
 		
 	}
-	*/
-
 	
+	/*
 	if (drct == E_Drct_Up)
 	{
 		DrawGraph(player.x , player.y , Player[0], TRUE);
@@ -166,7 +192,7 @@ int Player_Draw() {
 		DrawGraph(player.x , player.y, Player[3], TRUE);
 
 	}
-
+	*/
 	//デバッグ用処理
 	DrawFormatString(700, 20, GetColor(255, 0, 0), "1:上 2:右 3:下 4:左");
 	DrawFormatString(700, 40, GetColor(255, 0, 0), "Drct:%d", drct);
