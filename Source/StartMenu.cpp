@@ -4,8 +4,8 @@
 #include "Scene_Mgr.h"
 
 MenuElement_t MenuElement[2] = {
-{ 100, 100, "スタート" }, // タグの中身の順番で格納される。xに100が、yに100が、nameに"ゲームスタート"が
-{ 100, 200, "ゲーム終了" },
+{ 100, 100, "" }, // タグの中身の順番で格納される。xに100が、yに100が、nameに"ゲームスタート"が
+{ 100, 200, "" },
 };
 
 Image_t Image;	//画像入れたらコメントアウト解除
@@ -18,10 +18,10 @@ int StartMenu_Init() {
 	 SelectNum = 0; // 現在の選択番号
 
 	//画像入れたらコメントアウト解除
-	 Image.Start = LoadGraph("Image/Start.png");
-    Image.On_Start = LoadGraph("Image/Start2.png");
-	 Image.End = LoadGraph("Image/End.png");
-	 Image.On_End = LoadGraph("Image/End2.png");
+	 Image.Start = LoadGraph("Resource/Image/Start.png");
+    Image.On_Start = LoadGraph("Resource/Image/Start2.png");
+	 Image.End = LoadGraph("Resource/Image/End.png");
+	 Image.On_End = LoadGraph("Resource/Image/End2.png");
 	 
 	return 0;
 }
@@ -69,7 +69,7 @@ int StartMenu_Draw() {
 	for (int i = 0; i<2; i++) { // メニュー項目を描画
 		DrawFormatString(MenuElement[i].x, MenuElement[i].y, GetColor(255, 255, 255), MenuElement[i].name);
 	}
-	/*
+	
 	switch (SelectNum)	//画像入れたらコメントアウト解除
 	{
 	case 0:
@@ -84,7 +84,7 @@ int StartMenu_Draw() {
 		break;
 
 	}
-	*/
+	
 	return 0;
 }
 
