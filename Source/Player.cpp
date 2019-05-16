@@ -21,7 +21,8 @@ int count_x;		//Mapサイズのカウント(x)
 int count_y;		//Mapサイズのカウント(y)
 
 //Playerのフラグ
-int Move_Flg;		//Playerが動いるいるかどうかのフラグ
+int Move_Flg;			//Playerが動いるいるかどうかのフラグ
+int Player_Hit_Flg;		//PlayerがEnemyと当たったかどうかのフラグ
 
 int Player_Init() {
 
@@ -39,6 +40,9 @@ int Player_Init() {
 	count_x = 0;
 	count_y = 0;
 	Move_Flg = false;
+
+	//当たり判定
+	Player_Hit_Flg = false;
 
 	return 0;
 }
