@@ -12,16 +12,16 @@ int BG;
 int i, j;
 int MapData[MAP_HEIGHT][MAP_WIDTH] =
 {
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-{1,0,0,0,0,0,0,2,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,1,1,1,1,1,1,2,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 };
 //10ÇÕdefineÇ©constÇ≈íËã`Ç∑Ç◊Ç´
 //ÇﬁÇµÇÎç\ë¢ëÃÇã§í Ç∑Ç◊Ç´
@@ -31,9 +31,9 @@ int MapData[MAP_HEIGHT][MAP_WIDTH] =
 int MAP_Init() {
 
 	//âÊëúÇÃì«Ç›çûÇ›
-	ImageWall = LoadGraph("Image/Wall.png");
-	ImageLoad = LoadGraph("Image/Load.png");
-	ImageGoal = LoadGraph("Image/Goal.png");
+	ImageWall = LoadGraph("resource/Image/Wall.png");
+	ImageLoad = LoadGraph("resource/Image/Load.png");
+	ImageGoal = LoadGraph("resource/Image/Goal.png");
 
 	BG = LoadGraph("resource/Image/BackGround.png");
 	return 0;
@@ -56,21 +56,21 @@ int MAP_Draw() {
 	{
 		for (j = 0; j < MAP_WIDTH; j++)
 		{
-			if (MapData[i][j] == E_Object_Wall)
+			if (MapData[i][j] == P_Object_Wall)
 			{
 				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(0, 230, 0), TRUE);
 
 				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, ImageWall, TRUE);
 
 			}
-			if (MapData[i][j] == E_Object_Load)
+			if (MapData[i][j] == P_Object_Load)
 			{
 				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(122, 255, 122), TRUE);
 
 				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, ImageLoad, TRUE);
 
 			}
-			if (MapData[i][j] == E_Object_Goal)
+			if (MapData[i][j] == P_Object_Goal)
 			{
 				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(122, 122, 255), TRUE);
 
@@ -78,10 +78,6 @@ int MAP_Draw() {
 			}
 		}
 	}
-
-
-
-
 	//DrawExtendGraph(0, 0, 1280, 640, BG, true);
 	return 0;
 }
