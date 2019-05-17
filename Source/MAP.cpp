@@ -9,6 +9,20 @@ int ImageWall = 0;
 int ImageLoad = 0;
 int ImageGoal = 0;
 int BG;
+int i, j;
+int MapData[MAP_HEIGHT][MAP_WIDTH] =
+{
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,1,1,1,1,1,1,2,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+};
 //10はdefineかconstで定義すべき
 //むしろ構造体を共通すべき
 
@@ -17,11 +31,11 @@ int BG;
 int MAP_Init() {
 
 	//画像の読み込み
-	ImageWall = LoadGraph("Image/Wall.png");
-	ImageLoad = LoadGraph("Image/Load.png");
-	ImageGoal = LoadGraph("Image/Goal.png");
+	ImageWall = LoadGraph("resource/Image/Wall.png");
+	ImageLoad = LoadGraph("resource/Image/Load.png");
+	ImageGoal = LoadGraph("resource/Image/Goal.png");
 
-	BG = LoadGraph("Resource/Image/BackGround.png");
+	BG = LoadGraph("resource/Image/BackGround.png");
 	return 0;
 
 }
@@ -37,8 +51,34 @@ int MAP_Dpct() {
 int MAP_Draw() {
 	//こっちも毎フレーム呼ばれるが計算とは別に書きます
 
-	DrawExtendGraph(0, 0, 1280, 640, BG, true);
+	// マップを描く
+	for (i = 0; i < MAP_HEIGHT; i++)
+	{
+		for (j = 0; j < MAP_WIDTH; j++)
+		{
+			if (MapData[i][j] == P_Object_Wall)
+			{
+				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(0, 230, 0), TRUE);
 
+				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, ImageWall, TRUE);
+
+			}
+			if (MapData[i][j] == P_Object_Load)
+			{
+				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(122, 255, 122), TRUE);
+
+				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, ImageLoad, TRUE);
+
+			}
+			if (MapData[i][j] == P_Object_Goal)
+			{
+				//DrawBox(j * MAP_SIZE, i * MAP_SIZE,j * MAP_SIZE + MAP_SIZE, i * MAP_SIZE + MAP_SIZE,GetColor(122, 122, 255), TRUE);
+
+				DrawGraph(j * MAP_SIZE, i * MAP_SIZE, ImageGoal, TRUE);
+			}
+		}
+	}
+	//DrawExtendGraph(0, 0, 1280, 640, BG, true);
 	return 0;
 }
 
