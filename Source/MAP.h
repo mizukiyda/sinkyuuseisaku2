@@ -13,8 +13,8 @@ extern int MAP_Dpct();
 extern int MAP_Draw();
 extern int MAP_End();
 
-extern int MAP_Data(int ,int );
-
-
+int MAP_Data(int ,int );
+int MAP_Player_Pos_Init_x();
+int MAP_Player_Pos_Init_y();
 
 #endif

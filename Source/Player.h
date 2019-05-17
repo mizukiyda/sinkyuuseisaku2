@@ -6,9 +6,6 @@ extern int Player_Dpct();
 extern int Player_Draw();
 extern int Player_End();
 
-extern int MAP_Player_Pos_Init_x();
-extern int MAP_Player_Pos_Init_y();
-
 extern int Player_Check();
 extern int Player_Move();
 

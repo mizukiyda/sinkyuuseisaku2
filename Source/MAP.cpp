@@ -10,6 +10,8 @@ int ImageLoad = 0;
 int ImageGoal = 0;
 int BG;
 int i, j;
+int px, py;					//受け取るプレイヤーの変数
+
 int MapData[MAP_HEIGHT][MAP_WIDTH] =
 {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -26,9 +28,22 @@ int MapData[MAP_HEIGHT][MAP_WIDTH] =
 //10はdefineかconstで定義すべき
 //むしろ構造体を共通すべき
 
+//プレイヤーの初期x座標を受け取る
+int MAP_Player_Pos_Init_x() {
+
+	return px;		//初期化したプレイヤーのx座標を戻す
+}
+
+//プレイヤーの初期y座標を受け取る
+int MAP_Player_Pos_Init_y() {
+
+	return py;		//初期化したプレイヤーのy座標を戻す
+}
+
 int MAP_Data(int x , int y) {
 	return MapData[y][x];
 }
+
 //初期化
 int MAP_Init() {
 
@@ -38,8 +53,11 @@ int MAP_Init() {
 	ImageGoal = LoadGraph("resource/Image/Goal.png");
 
 	BG = LoadGraph("resource/Image/BackGround.png");
-	return 0;
 
+	px = 2;
+	py = 2;
+	
+	return 0;
 }
 
 //計算
