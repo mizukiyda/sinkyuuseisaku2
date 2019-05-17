@@ -97,14 +97,14 @@ int Player_Dpct() {
 
 int Player_Check() {
 
-	/*if (Map_Data(player.nx, player.ny) == P_Object_Load || Map_Data(player.nx, player.ny) == P_Object_Goal) {
+	if (MapData(player.nx, player.ny) == P_Object_Load || MapData(player.nx, player.ny) == P_Object_Goal) {
 		Move_Flg = true;			//“®‚­
 	}
 	
-	if (Map_Data(player.nx, player.ny) == P_Object_Wall) {
+	if (MapData(player.nx, player.ny) == P_Object_Wall) {
 		Move_Flg = false;
 		drct = E_Drct_Stop;
-	}*/
+	}
 	
 	return 0;
 }
