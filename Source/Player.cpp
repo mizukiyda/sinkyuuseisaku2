@@ -28,8 +28,8 @@ int Player_Hit_Flg;		//PlayerがEnemyと当たったかどうかのフラグ
 int Player_Init() {
 
 	//Playerの初期位置(Mapからもらう)
-	player.x = MAP_Player_Pos_Init_x();
-	player.y = MAP_Player_Pos_Init_y();
+	player.x = 5;//MAP_Player_Pos_Init_x();
+	player.y = 5;//MAP_Player_Pos_Init_y();
 
 	//画像の取得
 	Player[12] = {};
@@ -51,7 +51,11 @@ int Player_Init() {
 int Player_Dpct() {
 
 
+	//player.nx = player.x;
+	//player.ny = player.y;
+
 	if (Move_Flg = false) {
+
 		player.nx = player.x;
 		player.ny = player.y;
 
@@ -164,8 +168,8 @@ int Player_Draw() {
 	}
 	
 	//Playerが歩いているように見せる処理
-	if (Move_Flg == true)
-	{
+	if (Move_Flg == true){
+
 		//上下
 		if (drct == E_Drct_Up || drct == E_Drct_Down)
 		{
@@ -202,10 +206,12 @@ int Player_Draw() {
 		}
 
 	}
+
 	//デバッグ用処理
 	DrawFormatString(700, 20, GetColor(255, 0, 0), "1:上 2:右 3:下 4:左");
 	DrawFormatString(700, 40, GetColor(255, 0, 0), "Drct:%d", drct);
 	DrawFormatString(700, 60, GetColor(255, 0, 0), "x = %d   y = %d", player.x,player.y);
+	DrawFormatString(700, 80, GetColor(255, 0, 0), "MoveFlg:%d", Move_Flg);
 
 
 	return 0;

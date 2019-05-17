@@ -54,8 +54,8 @@ int MAP_Init() {
 
 	BG = LoadGraph("resource/Image/BackGround.png");
 
-	px = 2;
-	py = 2;
+	px = 5;
+	py = 5;
 	
 	return 0;
 }
