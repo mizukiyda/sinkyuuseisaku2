@@ -26,7 +26,9 @@ int MapData[MAP_HEIGHT][MAP_WIDTH] =
 //10‚Ídefine‚©const‚Å’è‹`‚·‚×‚«
 //‚Ş‚µ‚ë\‘¢‘Ì‚ğ‹¤’Ê‚·‚×‚«
 
-
+int MAP_Data(int x , int y) {
+	return MapData[y][x];
+}
 //‰Šú‰»
 int MAP_Init() {
 
