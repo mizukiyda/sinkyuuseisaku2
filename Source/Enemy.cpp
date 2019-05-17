@@ -8,13 +8,20 @@
 
 int Enemyalive;          //敵の画像の変数(生)
 int Enemydeath;          //敵の画像の変数(死)
-int Enemy_OnActive;		//Enemyの生存確認
+int Enemy_OnActive;		 //Enemyの生存確認
+int Enemy_x =100;
+int Enemy_y = 100;
+int E_Rand;
 
 int Enemy_Init() {
+
 	Enemyalive = LoadGraph("Resource/Image/Enemyalive.png");
 	Enemydeath = LoadGraph("Resource/Image/Enemydeath.png");
 
 	Enemy_OnActive = true;		//生きている
+
+	E_Rand = GetRand(5);
+
 	return 0;
 }
 
@@ -28,22 +35,39 @@ int Enemy_Dpct() {
 	else
 	{
 		if (Keyboard_Get(KEY_INPUT_SPACE) == 1)
-		{
-			Enemy_OnActive = false;
+		{ 
+	}
+
+	return 0;
+	while (1) {
+
+		switch (E_Rand) {
+		case E_Drct_Up:
+			Enemy_y -= 3;
+			break;
+		case E_Drct_Down:
+			Enemy_y += 3;
+			break;
+		case E_Drct_Right:
+			Enemy_x += 3;
+			break;
+		case E_Drct_Left:
+			Enemy_x -= 3;
+			break;
+		case E_Drct_Stop:
+			break;
 		}
 	}
-	
 	return 0;
 }
-
 int Enemy_Draw() {
 	if (Enemy_OnActive == true) 
 	{
-		DrawGraph(100, 100, Enemyalive, true);
+		DrawGraph(Enemy_x, Enemy_y, Enemyalive, true);
 	}
 	else 
 	{
-		DrawGraph(100, 100, Enemydeath, true);
+		DrawGraph(Enemy_x,Enemy_y, Enemydeath, true);
 	}
 	return 0;
 }
