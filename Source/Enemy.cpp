@@ -29,7 +29,7 @@ int Enemy_Init() {
 }
 
 int Enemy_Dpct() {
-	/*
+	
 	if (Enemy_OnActive == false) {
 		if (Keyboard_Get(KEY_INPUT_SPACE) == 1)
 		{
@@ -44,28 +44,9 @@ int Enemy_Dpct() {
 		}
 		return 0;
 	}
-	while(1){
-		switch (E_Rand) {
-		case E_Drct_Up:
-			Enemy_y --;
-			break;
-		case E_Drct_Down:
-			Enemy_y ++;
-			break;
-		case E_Drct_Right:
-			Enemy_x ++;
-			break;
-		case E_Drct_Left:
-			Enemy_x --;
-			break;
-		case E_Drct_Stop:
-			break;
-		}
-	return 0;
-}
-	*/
+
 	while (1) {                //無限ループ
-		switch (E_Rand) {      
+		switch (E_Rand) {
 		case E_Drct_Up:        //上
 			Enemy_y--;
 			break;
@@ -81,20 +62,20 @@ int Enemy_Dpct() {
 		case E_Drct_Stop:      //止
 			break;
 		}
-		return 0;
+		return 1;
 		if (player_x + player_y >= Enemy_x && player_x <= Enemy_x + Enemy_y) {      //プレイヤーとの当たり判定
 			Enemy_OnActive = false;                                                 //当たったら生死判定をfalseにする
 		}
 		break;
 	}
 }
-	/*
-	else
-	{
-		Enemy_OnActive = false;
-	}
-	*/
-
+//	switch (E_Rand) {
+int Enemy_Pos_Init_x() {
+	return 0;
+}
+int Enemy_Pos_Init_y() {
+	return 0;
+}
 int Enemy_Draw() {
 	if (Enemy_OnActive == true) 
 	{
