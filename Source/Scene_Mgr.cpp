@@ -34,7 +34,7 @@ void Scene_Mgr_Dpct() {
 
 	case E_Scene_Game:
 		//ゲーム画面
-		
+		Player_Move();
 		MAP_Dpct();
 	    Enemy_Dpct();
 		Player_Dpct();
@@ -67,7 +67,6 @@ void Scene_Mgr_Draw() {
 		break;
 	case E_Scene_Result:
 		Result_Draw();
-		
 		break;
 	case E_Scene_GameMenu:
 		//ゲームメニュー
@@ -97,10 +96,8 @@ static void Scene_Mgr_Init_Module(E_Scene scene) {
 		MAP_Init();
 		Player_Init();
 		Enemy_Init();
-		
 		UI_Init();
 		break;
-
 	case E_Scene_Result:
 		Result_Init();
 		break;

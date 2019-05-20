@@ -123,28 +123,36 @@ int Player_Move() {
 
 		//上
 	case E_Drct_Up:
-		count_y--;
+		//for (int i = 0;i <= 64;i++) {
+			count_y--;
+		//}
 		break;
 		//右
 	case E_Drct_Right:
-		count_x++;
+		//for (int i = 0;i <= 64;i++) {
+			count_x++;
+		//}
 		break;
 		//下
 	case E_Drct_Down:
-		count_y++;
+		//for (int i = 0;i <= 64;i++) {
+			count_y++;
+		//}
 		break;
 		//左
 	case E_Drct_Left:
-		count_x--;
+		//for (int i = 0;i <= 64;i++) {
+			count_x--;
+		//}
 		break;
 	}
 
 	//count_xかcount_yのカウントが±64を達したなら　
 	if (count_x >= MAP_SIZE - 1 || count_y <= -MAP_SIZE + 1 || count_x <= -MAP_SIZE + 1 || count_y >= MAP_SIZE - 1){
 		//プレイヤーの座標に仮の座標を代入して座標を更新(描画の際に使うのはplayer.x,player.y)
-		player.y = player.ny;
 		player.x = player.nx;
-
+		player.y = player.ny;
+	
 		//カウントの初期化
 		count_x = 0;
 		count_y = 0;
@@ -182,28 +190,25 @@ int Player_Draw() {
 		if (drct == E_Drct_Up)
 		{
 			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[0 + Player_Animetion], TRUE);
-		
+			None = 1;
 		}
 		//右
 		if (drct == E_Drct_Right)
 		{
 			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[3 + Player_Animetion], TRUE);
-
-		
+			None = 4;
 		}
 		//下
 		if (drct == E_Drct_Down)
 		{
 			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[6 + Player_Animetion], TRUE);
-
-		
+			None = 7;
 		}
 		//左
 		if (drct == E_Drct_Left)
 		{
 			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[9 + Player_Animetion], TRUE);
-
-		
+			None = 10;
 		}
 	}
 
