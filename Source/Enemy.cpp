@@ -71,10 +71,10 @@ int Enemy_Dpct() {
 }
 //	switch (E_Rand) {
 int Enemy_Pos_Init_x() {
-	return 0;
+	return Enemy_y;
 }
 int Enemy_Pos_Init_y() {
-	return 0;
+	return Enemy_x;
 }
 int Enemy_Draw() {
 	if (Enemy_OnActive == true) 
