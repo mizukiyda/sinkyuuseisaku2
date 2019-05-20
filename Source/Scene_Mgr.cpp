@@ -33,7 +33,8 @@ void Scene_Mgr_Dpct() {
 		break;
 
 	case E_Scene_Game:
-		//ƒQ[ƒ€‰æ–Ê		
+		//ƒQ[ƒ€‰æ–Ê
+		
 		MAP_Dpct();
 	    Enemy_Dpct();
 		Player_Dpct();
@@ -93,9 +94,10 @@ static void Scene_Mgr_Init_Module(E_Scene scene) {
 		break;
 	case E_Scene_Game:
 		//ƒQ[ƒ€‰æ–Ê
+		MAP_Init();
 		Player_Init();
 		Enemy_Init();
-		MAP_Init();
+		
 		UI_Init();
 		break;
 
