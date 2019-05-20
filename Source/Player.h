@@ -6,8 +6,8 @@ extern int Player_Dpct();
 extern int Player_Draw();
 extern int Player_End();
 
-extern int Player_Check();
-extern int Player_Move();
+ int Player_Check();
+ int Player_Move();
 
 typedef struct {
 	int x;		//åªç›à íu
