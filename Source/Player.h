@@ -8,6 +8,8 @@ extern int Player_End();
 
  int Player_Check();
  int Player_Move();
+ int Player_Pos_Init_x();
+ int Player_Pos_Init_y();
 
 typedef struct {
 	int x;		//åªç›à íu

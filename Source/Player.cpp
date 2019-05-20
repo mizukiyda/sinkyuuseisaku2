@@ -21,6 +21,10 @@ E_Drct drct;				//向き
 int count_x;		//Mapサイズのカウント(x)
 int count_y;		//Mapサイズのカウント(y)
 
+//Enemyの座標を入れる
+int enemy_x;
+int enemy_y;
+
 //Playerのフラグ
 int Move_Flg;			//Playerが動いるいるかどうかのフラグ
 int Player_Hit_Flg;		//PlayerがEnemyと当たったかどうかのフラグ
@@ -33,6 +37,7 @@ int Player_Init() {
 	player.nx = player.x;
 	player.ny = player.y;
 
+	
 	//画像の取得
 	Player[12] = {};
 	LoadDivGraph("Resource/Image/Player.png", 12, 3, 4, 64, 64,Player);  //配列「Player」へ画像を入れる
@@ -53,7 +58,13 @@ int Player_Init() {
 
 int Player_Dpct() {
 
-	
+	//エネミーの座標を入れる（上記のは仮）
+	enemy_x = Enmey_Pos_Init_x();
+	enemy_y = Enemy_Pos_Init_y();
+	/*for (int i = 0;i <= EnemyCount;i++) {
+	enemy_x[i] = Enmey_Pos_Init_x(i);
+	enemy_y[i] = Enmey_Pos_Init_y(i);
+	}*/
 
 	if (Move_Flg == false) {
 		player.nx = player.x;
@@ -221,6 +232,16 @@ int Player_Draw() {
 	DrawFormatString(700, 120, GetColor(255, 0, 0), "count_x:%d  count_y:%d", count_x,count_y);
 	
 	return 0;
+}
+
+int Player_Pos_Init_x() {
+
+	return player.x;
+}
+
+int Player_Pos_Init_y() {
+
+	return player.y;
 }
 
 int Player_End() {
