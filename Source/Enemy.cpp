@@ -8,13 +8,14 @@
 
 int Enemyalive;          //“G‚Ì‰æ‘œ‚Ì•Ï”(¶)
 int Enemydeath;          //“G‚Ì‰æ‘œ‚Ì•Ï”(€)
-int Enemy_OnActive;		 //Enemy‚Ì¶‘¶Šm”F
+
 
 int Enemy_x = 100;       //
 int Enemy_y = 100;
 int player_x;
 int player_y;
 int E_Rand;
+
 
 int Enemy_Init() {
 
@@ -29,7 +30,7 @@ int Enemy_Init() {
 }
 
 int Enemy_Dpct() {
-	
+	/*
 	if (Enemy_OnActive == false) {
 		if (Keyboard_Get(KEY_INPUT_SPACE) == 1)
 		{
@@ -44,22 +45,21 @@ int Enemy_Dpct() {
 		}
 		return 0;
 	}
-
 	while (1) {                //–³ŒÀƒ‹[ƒv
 		switch (E_Rand) {
-		case E_Drct_Up:        //ã
+		case 0:        //ã
 			Enemy_y--;
 			break;
-		case E_Drct_Down:      //‰º
+		case 1:      //‰º
 			Enemy_y++;
 			break;
-		case E_Drct_Right:     //‰E
+		case 2:     //‰E
 			Enemy_x++;
 			break;
-		case E_Drct_Left:      //¶
+		case 3:      //¶
 			Enemy_x--;
 			break;
-		case E_Drct_Stop:      //~
+		case 4:      //~
 			break;
 		}
 		return 1;
@@ -68,6 +68,25 @@ int Enemy_Dpct() {
 		}
 		break;
 	}
+	*/
+}
+//Enemy‚ÌˆÚ“®‚ğˆê‚Âˆê‚ÂŠÖ”‚ÅŠÇ—‚·‚é
+
+int Enemy_Move0() {
+	if()
+	return 0;
+}
+int Enemy_Move1() {
+	return 0;
+}
+int Enemy_Move2() {
+	return 0;
+}
+int Enemy_Move3() {
+	return 0;
+}
+int Enemy_Move4() {
+	return 0;
 }
 //	switch (E_Rand) {
 int Enemy_Pos_Init_x() {
