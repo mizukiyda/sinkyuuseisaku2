@@ -11,10 +11,7 @@ MenuElement_t ResultMenuElement[MENU_ELEMENT_MAX]{
 };
 
 //ここで変数を宣言（C++を使わないのでグローバル変数）
-
-
 static int SelectNum;
-
 
 // Init 初期化
 int Result_Init() {
@@ -49,10 +46,6 @@ int Result_Dpct() {
 					// 次のステージの敵の配列を入れる
 
 					Scene_Mgr_ChangeScene(E_Scene_Game);
-
-
-
-
 					tmp = MAP_GetHandleflag();
 						//Scene_Mgr_ChangeScene(E_Scene_StartMenu);
 					else {
@@ -90,7 +83,6 @@ int Result_Draw() {
 	for (int i = 0; i<MENU_ELEMENT_MAX; i++) { // メニュー項目を描画
 		DrawFormatString(ResultMenuElement[i].x, ResultMenuElement[i].y, GetColor(255, 255, 255), ResultMenuElement[i].name);
 	}
-
 	return 0;
 }
 

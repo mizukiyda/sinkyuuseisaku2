@@ -37,7 +37,6 @@ int Player_Init() {
 	player.nx = player.x;
 	player.ny = player.y;
 
-	
 	//画像の取得
 	Player[12] = {};
 	LoadDivGraph("Resource/Image/Player.png", 12, 3, 4, 64, 64,Player);  //配列「Player」へ画像を入れる
@@ -59,7 +58,7 @@ int Player_Init() {
 int Player_Dpct() {
 
 	//エネミーの座標を入れる（上記のは仮）
-	enemy_x = Enmey_Pos_Init_x();
+	enemy_x = Enemy_Pos_Init_x();
 	enemy_y = Enemy_Pos_Init_y();
 	/*for (int i = 0;i <= EnemyCount;i++) {
 	enemy_x[i] = Enmey_Pos_Init_x(i);
@@ -134,27 +133,19 @@ int Player_Move() {
 
 		//上
 	case E_Drct_Up:
-		//for (int i = 0;i <= 64;i++) {
 			count_y--;
-		//}
 		break;
 		//右
 	case E_Drct_Right:
-		//for (int i = 0;i <= 64;i++) {
 			count_x++;
-		//}
 		break;
 		//下
 	case E_Drct_Down:
-		//for (int i = 0;i <= 64;i++) {
 			count_y++;
-		//}
 		break;
 		//左
 	case E_Drct_Left:
-		//for (int i = 0;i <= 64;i++) {
 			count_x--;
-		//}
 		break;
 	}
 
