@@ -15,12 +15,12 @@ int Enemy_y = 100;
 int player_x;
 int player_y;
 int E_Rand;
-
+int Enemy_OnActive;
 
 int Enemy_Init() {
 
-	Enemyalive = LoadGraph("Resource/Image/Enemyalive.png");
-	Enemydeath = LoadGraph("Resource/Image/Enemydeath.png");
+	Enemyalive = LoadGraph("resource/Image/Enemyalive.png");
+	Enemydeath = LoadGraph("resource/Image/Enemydeath.png");
 
 	Enemy_OnActive = true;		//¶€”»’è == ¶‚«‚Ä‚¢‚é
 
@@ -68,12 +68,14 @@ int Enemy_Dpct() {
 		}
 		break;
 	}
+
 	*/
+	return  0;
 }
 //Enemy‚ÌˆÚ“®‚ğˆê‚Âˆê‚ÂŠÖ”‚ÅŠÇ—‚·‚é
 
 int Enemy_Move0() {
-	if()
+	//if()
 	return 0;
 }
 int Enemy_Move1() {
@@ -96,13 +98,13 @@ int Enemy_Pos_Init_y() {
 	return Enemy_x;
 }
 int Enemy_Draw() {
-	if (Enemy_OnActive == true) 
+	if (Enemy_OnActive == true)
 	{
 		DrawGraph(Enemy_x, Enemy_y, Enemyalive, true);
 	}
-	else 
+	else
 	{
-		DrawGraph(Enemy_x,Enemy_y, Enemydeath, true);
+		DrawGraph(Enemy_x, Enemy_y, Enemydeath, true);
 	}
 	return 0;
 }
