@@ -63,7 +63,7 @@ int Enemy_Dpct() {
 	*/
 
 	//while (0) {                //無限ループ
-	/*switch (E_Rand) {
+	switch (E_Rand) {
 	case 0:        //上
 	Enemy_y--;
 	break;
@@ -84,9 +84,9 @@ int Enemy_Dpct() {
 	break;
 	}
 	//return 1;
-	/*if (Player_x + Player_y >= Enemy_x && Player_x <= Enemy_x + Enemy_y) {      //プレイヤーとの当たり判定
+	if (Player_x + Player_y >= Enemy_x && Player_x <= Enemy_x + Enemy_y) {      //プレイヤーとの当たり判定
 	Enemy_OnActive = false;                                                 //当たったら生死判定をfalseにする
-	}*/
+	}
 	//break;
 	//}
 	return 0;
@@ -96,7 +96,7 @@ int Enemy_Dpct() {
 
 //Enemyの移動を一つ一つ関数で管理する
 
-/*int Enemy_Move0() {
+int Enemy_Move0() {
 	//if()
 	return 0;
 
@@ -112,7 +112,7 @@ int  Enemy_Move3() {
 }
 int  Enemy_Move4() {
 	return 0;
-}*/
+}
 //	switch (E_Rand) {
 int Enemy_Pos_Init_x() {
 	
