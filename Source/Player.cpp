@@ -110,6 +110,12 @@ int Player_Dpct() {
 			Player_Move();
 		}
 	}
+
+	//当たり判定
+	/*if () {
+
+
+	}*/
 	return 0;
 }
 
@@ -214,7 +220,8 @@ int Player_Draw() {
 		}
 	}
 
-	//デバッグ用処理
+	//デバッグ
+	SetFontSize(18);
 	DrawFormatString(700, 20, GetColor(255, 0, 0), "0:上 1:右 2:下 3:左 4 :止まる");
 	DrawFormatString(700, 40, GetColor(255, 0, 0), "Drct:%d", drct);
 	DrawFormatString(700, 60, GetColor(255, 0, 0), "x = %d   y = %d", player.x,player.y);
