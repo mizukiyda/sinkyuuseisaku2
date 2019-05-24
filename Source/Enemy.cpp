@@ -31,6 +31,7 @@ int Enemy_Dpct() {
 
 	Player_x = Player_Pos_Init_x();
 	Player_y = Player_Pos_Init_y();
+<<<<<<< HEAD
 	if (Enemy_OnActive == true) {
 		if (Keyboard_Get(KEY_INPUT_SPACE) == 1)
 		{
@@ -46,22 +47,25 @@ int Enemy_Dpct() {
 		}
 	}
 	//E_Rand = GetRand(4);
+=======
+>>>>>>> saiton
 	/*
-	if (Enemy_OnActive == false) {
+	if (Enemy_OnActive == true) {
 	if (Keyboard_Get(KEY_INPUT_SPACE) == 1)
 	{
-	Enemy_OnActive = true;
+	Enemy_OnActive = false;
 	}
 	}
+
 	else
 	{
 	if (Keyboard_Get(KEY_INPUT_SPACE) == 1)
 	{
 	Enemy_OnActive = true;
 	}
-	return 0;
 	}
 	*/
+<<<<<<< HEAD
 
 	//while (0) {                //無限ループ
 	/*switch (E_Rand) {
@@ -87,10 +91,34 @@ int Enemy_Dpct() {
 	//return 1;
 	if (Player_x + Player_y >= Enemy_x && Player_x <= Enemy_x + Enemy_y) {      //プレイヤーとの当たり判定
 		Enemy_OnActive = false;                                                 //当たったら生死判定をfalseにする
+=======
+	E_Rand = GetRand(4);
+
+	while (1) {                //無限ループ
+		switch (E_Rand) {
+		case 0:        //上
+			Enemy_y -= 64;
+			break;
+
+		case 1:      //下
+			Enemy_y += 64;
+			break;
+
+		case 2:     //右
+			Enemy_x += 64;
+			break;
+
+		case 3:      //左
+			Enemy_x -= 64;
+			break;
+
+		case 4:      //止
+			break;
+		}
+		return E_Rand;
+>>>>>>> saiton
 	}
-	//break;
-	//}
-	return 0;
+
 }
 //Enemyの移動を一つ一つ関数で管理する
 
@@ -127,11 +155,11 @@ int Enemy_Pos_Init_y() {
 int Enemy_Draw() {
 	if (Enemy_OnActive == true)
 	{
-		DrawGraph(Enemy_x, Enemy_y, Enemyalive, true);
+		DrawGraph(Enemy_x*MAP_SIZE, Enemy_y*MAP_SIZE, Enemyalive, true);
 	}
 	else
 	{
-		DrawGraph(Enemy_x, Enemy_y, Enemydeath, true);
+		DrawGraph(Enemy_x*MAP_SIZE, Enemy_y*MAP_SIZE, Enemydeath, true);
 	}
 	return 0;
 }
