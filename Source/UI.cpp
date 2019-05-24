@@ -6,33 +6,17 @@
 #include "Scene_Mgr.h"
 #include "Enemy.h"
 
-#define HISTORY_MAX 256
 
-//ここで変数を宣言（C++を使わないのでグローバル変数）
-int ImageMenu = 0;
 
 
 
 int UI_Init() {
-	//ここで初期化をする
-	//画像の読み込み
-	ImageMenu = LoadGraph("resource/Image/STR.png");
-	
+
 	return 0;
 }
 
 int UI_Dpct() {
-	//ここで計算
-	//Dqctは毎フレーム呼ばれる
-	int Key;
-	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
-	{
-		Key = GetJoypadInputState(DX_INPUT_KEY);
-		if (Keyboard_Get(KEY_INPUT_M) == 1) {
 
-		}
-
-	}
 	return 0;
 }
 
