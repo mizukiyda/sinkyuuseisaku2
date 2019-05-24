@@ -8,8 +8,8 @@
 int Enemyalive;          //“G‚Ì‰æ‘œ‚Ì•Ï”(¶)
 int Enemydeath;          //“G‚Ì‰æ‘œ‚Ì•Ï”(Ž€)
 
-int Enemy_x;///= Enemy_Pos_Init_x();       //
-int Enemy_y;//= Enemy_Pos_Init_y();
+int Enemy_x;
+int Enemy_y;
 int Player_x;
 int Player_y;
 int E_Rand;
@@ -21,15 +21,16 @@ int Enemy_Init() {
 	Enemydeath = LoadGraph("resource/Image/Enemydeath.png");
 
 	Enemy_OnActive = true;		//¶Ž€”»’è == ¶‚«‚Ä‚¢‚é
-	Enemy_x = 100;
-	Enemy_y = 100;
-	
 
 	return 0;
 }
 
 int Enemy_Dpct() {
+	Enemy_x = MAP_Enemy_Pos_Init_x();
+	Enemy_y = MAP_Enemy_Pos_Init_y();
 
+	Player_x = Player_Pos_Init_x();
+	Player_y = Player_Pos_Init_y();
 	if (Enemy_OnActive == true) {
 		if (Keyboard_Get(KEY_INPUT_SPACE) == 1)
 		{
@@ -37,7 +38,7 @@ int Enemy_Dpct() {
 		}
 	}
 
-	else 
+	else
 	{
 		if (Keyboard_Get(KEY_INPUT_SPACE) == 1)
 		{
@@ -63,7 +64,7 @@ int Enemy_Dpct() {
 	*/
 
 	//while (0) {                //–³ŒÀƒ‹[ƒv
-	switch (E_Rand) {
+	/*switch (E_Rand) {
 	case 0:        //ã
 	Enemy_y--;
 	break;
@@ -82,10 +83,10 @@ int Enemy_Dpct() {
 
 	case 4:      //Ž~
 	break;
-	}
+	}*/
 	//return 1;
 	if (Player_x + Player_y >= Enemy_x && Player_x <= Enemy_x + Enemy_y) {      //ƒvƒŒƒCƒ„[‚Æ‚Ì“–‚½‚è”»’è
-	Enemy_OnActive = false;                                                 //“–‚½‚Á‚½‚ç¶Ž€”»’è‚ðfalse‚É‚·‚é
+		Enemy_OnActive = false;                                                 //“–‚½‚Á‚½‚ç¶Ž€”»’è‚ðfalse‚É‚·‚é
 	}
 	//break;
 	//}
@@ -115,11 +116,11 @@ int  Enemy_Move4() {
 }
 //	switch (E_Rand) {
 int Enemy_Pos_Init_x() {
-	
+
 	return Enemy_x;
 }
 int Enemy_Pos_Init_y() {
-	
+
 	return Enemy_y;
 }
 
