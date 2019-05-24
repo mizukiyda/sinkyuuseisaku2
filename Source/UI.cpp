@@ -53,11 +53,17 @@ int UI_Draw() {
 	{
 		DrawGraph(Menu_x, Menu_y, ImageMenu, true);
 	}
-	{
+	
 		// ï`âÊÇ∑ÇÈï∂éöóÒÇÃÉTÉCÉYÇê›íË
 		SetFontSize(34);
 		DrawFormatString(1000, 20, GetColor(255, 0, 0), "HP:200");
-	};
+		DrawFormatString(1000, 120, GetColor(255, 0, 0), "MP:100");
+
+		DrawBox(1000, 60,1200,100 ,GetColor(255, 255, 255), true);
+		DrawBox(1010, 70, 1190, 90, GetColor(0, 255, 0), true);
+
+		DrawBox(1000, 160, 1200, 200, GetColor(255, 255, 255), true);
+		DrawBox(1010, 170, 1190, 190, GetColor(0, 0, 255), true);
 
 	return 0;
 }
