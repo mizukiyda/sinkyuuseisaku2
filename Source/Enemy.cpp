@@ -18,8 +18,8 @@ int Enemy_OnActive;
 
 int Enemy_Init() {
 
-	Enemyalive = LoadGraph("Resource/Image/Enemyalive.png");
-	Enemydeath = LoadGraph("Resource/Image/Enemydeath.png");
+	Enemyalive = LoadGraph("resource/Image/Enemyalive.png");
+	Enemydeath = LoadGraph("resource/Image/Enemydeath.png");
 
 	Enemy_OnActive = true;		//¶€”»’è == ¶‚«‚Ä‚¢‚é
 
@@ -44,7 +44,9 @@ int Enemy_Dpct() {
 	}
 	return 0;
 	}
+
 	*/
+<<<<<<< HEAD
 	//while (0) {                //–³ŒÀƒ‹[ƒv
 	switch (E_Rand) {
 	case 0:        //ã
@@ -77,6 +79,15 @@ int   Enemy_Move0() {
 		Enemy_y++;
 		return 0;
 	}
+=======
+	return  0;
+}
+//Enemy‚ÌˆÚ“®‚ğˆê‚Âˆê‚ÂŠÖ”‚ÅŠÇ—‚·‚é
+
+int Enemy_Move0() {
+	//if()
+	return 0;
+>>>>>>> yokoyama
 }
 int  Enemy_Move1() {
 	return 0;
