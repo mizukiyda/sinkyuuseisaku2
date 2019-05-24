@@ -112,10 +112,13 @@ int Player_Dpct() {
 	}
 
 	//当たり判定
-	/*if () {
-
-
-	}*/
+	if (player.x >= enemy_x && player.x + 50 <= enemy_x + 50 && player.y <= enemy_y && player.y + 50 >= enemy_y + 50) {
+		Player_Hit_Flg = true;
+	}
+	else
+	{
+		Player_Hit_Flg = false;
+	}
 	return 0;
 }
 
@@ -220,6 +223,9 @@ int Player_Draw() {
 		}
 	}
 
+	if (Player_Hit_Flg == true) {
+		DrawFormatString(700, 140, GetColor(255, 0, 0), "当たった");
+	}
 	//デバッグ
 	SetFontSize(18);
 	DrawFormatString(700, 20, GetColor(255, 0, 0), "0:上 1:右 2:下 3:左 4 :止まる");
@@ -229,6 +235,8 @@ int Player_Draw() {
 	DrawFormatString(700, 100, GetColor(255, 0, 0), "MoveFlg:%d", Move_Flg);
 	DrawFormatString(700, 120, GetColor(255, 0, 0), "count_x:%d  count_y:%d", count_x,count_y);
 	
+	//DrawBox(enemy_x, enemy_y, enemy_x+50, enemy_y+50, GetColor(255, 0, 0), true);
+	//DrawBox(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, player.x * MAP_SIZE + count_x + 30,player.y * MAP_SIZE + count_y + 30, GetColor(255, 0, 0), true);
 	return 0;
 }
 

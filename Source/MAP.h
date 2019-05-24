@@ -16,5 +16,7 @@ extern int MAP_End();
 int MAP_Data(int ,int );
 int MAP_Player_Pos_Init_x();
 int MAP_Player_Pos_Init_y();
+int MAP_Enemy_Pos_Init_x();
+int MAP_Enemy_Pos_Init_y();
 
 #endif

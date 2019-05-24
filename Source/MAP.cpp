@@ -11,7 +11,7 @@ int ImageGoal = 0;
 int BG;
 int i, j;
 int px, py;					//受け取るプレイヤーの変数
-
+int ex, ey;					//受け取るエネミーの変数
 int MapData[MAP_HEIGHT][MAP_WIDTH] =
 {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -40,6 +40,17 @@ int MAP_Player_Pos_Init_y() {
 	return py;		//初期化したプレイヤーのy座標を戻す
 }
 
+//プレイヤーの初期x座標を受け取る
+int MAP_Enemy_Pos_Init_x() {
+
+	return ex;		//初期化したプレイヤーのx座標を戻す
+}
+
+//プレイヤーの初期y座標を受け取る
+int MAP_Enemy_Pos_Init_y() {
+
+	return ey;		//初期化したプレイヤーのy座標を戻す
+}
 int MAP_Data(int x , int y) {
 	return MapData[y][x];
 }
@@ -56,7 +67,8 @@ int MAP_Init() {
 
 	px = 5;
 	py = 5;
-	
+	ex = 2;
+	ey = 2;
 	return 0;
 }
 
