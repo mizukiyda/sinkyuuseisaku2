@@ -38,6 +38,11 @@ int UI_Dpct() {
 			Menu_OnActive = false;	//画像表示
 		}
 	}
+
+
+
+
+
 	return 0;
 }
 
@@ -48,6 +53,11 @@ int UI_Draw() {
 	{
 		DrawGraph(Menu_x, Menu_y, ImageMenu, true);
 	}
+	{
+		// 描画する文字列のサイズを設定
+		SetFontSize(34);
+		DrawFormatString(1000, 20, GetColor(255, 0, 0), "HP:200");
+	};
 
 	return 0;
 }
