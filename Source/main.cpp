@@ -5,8 +5,8 @@
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	SetMainWindowText("ゼミ ゲーム制作");
-	SetWindowSize(1280, 640);
-	SetGraphMode(1280,640,32);
+	SetWindowSize(1472, 768);
+	SetGraphMode(1472,768,32);
 	ChangeWindowMode(TRUE), DxLib_Init(), SetDrawScreen(DX_SCREEN_BACK); //ウィンドウモード変更と初期化と裏画面設定
 
 	//初期化管理関数の呼び出し
