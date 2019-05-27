@@ -3,8 +3,8 @@
 
 
 #define MAP_SIZE	64			// マップチップ一つのドットサイズ
-#define MAP_WIDTH	15			// マップの幅
-#define MAP_HEIGHT	10			// マップの縦長さ
+#define MAP_WIDTH	23			// マップの幅
+#define MAP_HEIGHT	12			// マップの縦長さ
 
 #define MAP_MAX 3
 
