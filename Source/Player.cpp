@@ -114,6 +114,7 @@ int Player_Dpct() {
 	//“–‚½‚è”»’è
 	if (player.x >= enemy_x && player.x + 50 <= enemy_x + 50 && player.y <= enemy_y && player.y + 50 >= enemy_y + 50) {
 		Player_Hit_Flg = true;
+		Scene_Mgr_ChangeScene(E_Scene_GameScene);
 	}
 	else
 	{

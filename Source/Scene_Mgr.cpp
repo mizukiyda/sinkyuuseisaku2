@@ -6,6 +6,7 @@
 #include "MAP.h"
 #include "UI.h"
 #include"Result.h"
+#include"RPG.h"
 
 static E_Scene Sceneflag = E_Scene_StartMenu;		//今のシーン
 static E_Scene n_Sceneflag = E_Scene_None;			//次のシーン
@@ -41,6 +42,9 @@ void Scene_Mgr_Dpct() {
 		UI_Dpct();
 		break;
 
+	case E_Scene_GameScene:
+		RPG_Dpct();
+		break;
 	case E_Scene_Result:
 		Result_Dpct();
 		break;
@@ -64,6 +68,10 @@ void Scene_Mgr_Draw() {
 		Enemy_Draw();
 		Player_Draw();
 		UI_Draw();
+		break;
+
+	case E_Scene_GameScene:
+		RPG_Draw();
 		break;
 	case E_Scene_Result:
 		Result_Draw();
@@ -98,6 +106,10 @@ static void Scene_Mgr_Init_Module(E_Scene scene) {
 		Enemy_Init();
 		UI_Init();
 		break;
+
+	case E_Scene_GameScene:
+		RPG_Init();
+		break;
 	case E_Scene_Result:
 		Result_Init();
 		break;
@@ -123,6 +135,9 @@ static void Scene_Mgr_End_Module(E_Scene scene) {
 		UI_End();
 		break;
 
+	case E_Scene_GameScene:
+		RPG_End();
+		break;
 	case E_Scene_Result:
 		Result_End();
 		break;

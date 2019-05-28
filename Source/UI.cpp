@@ -52,20 +52,20 @@ int UI_Draw() {
 	if (Menu_OnActive == true)
 	{
 		DrawGraph(Menu_x, Menu_y, ImageMenu, true);
-	}
-	
+
+
 		// 描画する文字列のサイズを設定
 		SetFontSize(34);
-		DrawFormatString(1000, 20, GetColor(255, 0, 0), "HP:200");
-		DrawFormatString(1000, 120, GetColor(255, 0, 0), "MP:100");
+		DrawFormatString(1000, 520, GetColor(255, 0, 0), "HP:200");
+		DrawFormatString(1000, 620, GetColor(255, 0, 0), "MP:100");
 
 		//HPのバー
-		DrawBox(1000, 60,1200,100 ,GetColor(255, 255, 255), true);
-		DrawBox(1010, 70, 1190, 90, GetColor(0, 255, 0), true);
+		DrawBox(1000, 560, 1200, 600, GetColor(255, 255, 255), true);
+		DrawBox(1010, 570, 1190, 590, GetColor(0, 255, 0), true);
 		//MPのバー
-		DrawBox(1000, 160, 1200, 200, GetColor(255, 255, 255), true);
-		DrawBox(1010, 170, 1190, 190, GetColor(0, 0, 255), true);
-
+		DrawBox(1000, 660, 1200, 700, GetColor(255, 255, 255), true);
+		DrawBox(1010, 670, 1190, 690, GetColor(0, 0, 255), true);
+	}
 	return 0;
 }
 
