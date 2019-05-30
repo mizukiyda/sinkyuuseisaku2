@@ -5,9 +5,8 @@
 #include "Scene_Mgr.h"
 
 MenuElement_t ResultMenuElement[MENU_ELEMENT_MAX]{
-{ 100 , 200 , "Next" },
-{ 100 , 300 , "Title" },
-{ 100 , 400 , "Exit" }
+{ 600 , 400 , "にゅ～げ～む" },
+{ 600 , 600 , "Exit" }
 };
 
 //ここで変数を宣言（C++を使わないのでグローバル変数）
@@ -25,18 +24,18 @@ int Result_Dpct() {
 	//ここで計算
 	//Dqctは毎フレーム呼ばれる
 	if (Keyboard_Get(KEY_INPUT_UP) == 1) {
-		SelectNum = (SelectNum - 1) % 3;	// 現在の選択項目を一つ上にずらす
+		SelectNum = (SelectNum - 1) % 2;	// 現在の選択項目を一つ上にずらす
 	}
 	if (SelectNum == -1) {
 		SelectNum = MENU_ELEMENT_MAX - 1;
 	}
 
 	if (Keyboard_Get(KEY_INPUT_DOWN) == 1) {
-		SelectNum = (SelectNum + 1) % 3;	// 現在の選択項目を一つ下にずらす
+		SelectNum = (SelectNum + 1) % 2;	// 現在の選択項目を一つ下にずらす
 	}
 	for (int i = 0; i < MENU_ELEMENT_MAX; i++) {
 		if (i == SelectNum) {          // 今処理しているのが、選択番号と同じ要素なら
-			ResultMenuElement[i].x = 80; // 座標を80にする
+			ResultMenuElement[i].x = 600; // 座標を80にする
 			if (Keyboard_Get(KEY_INPUT_SPACE) == 1) {	//座標が80になっている項目でスペースキーを押すと
 														//その項目の中に入る
 				int tmp;
@@ -55,10 +54,10 @@ int Result_Dpct() {
 
 
 					break;	*/
-				case 1:
+				case 0:
 					Scene_Mgr_ChangeScene(E_Scene_StartMenu);
 					break;
-				case 2:
+				case 1:
 					Scene_Mgr_End();
 					DxLib_End(); // DXライブラリ終了処理
 					exit(0);
@@ -78,7 +77,7 @@ int Result_Draw() {
 	//ここで描写
 	//こっちも毎フレーム呼ばれますが計算とは別に書きます
 
-	DrawFormatString(100, 100, GetColor(255, 255, 255), "りざると");
+	DrawFormatString(600, 100, GetColor(255, 255, 255), "りざると");
 
 	for (int i = 0; i<MENU_ELEMENT_MAX; i++) { // メニュー項目を描画
 		DrawFormatString(ResultMenuElement[i].x, ResultMenuElement[i].y, GetColor(255, 255, 255), ResultMenuElement[i].name);

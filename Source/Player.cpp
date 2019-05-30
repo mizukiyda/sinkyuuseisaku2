@@ -151,7 +151,8 @@ int Player_Move() {
 		break;
 		//下
 	case E_Drct_Down:
-			count_y++;
+			count_y
+				++;
 		break;
 		//左
 	case E_Drct_Left:
@@ -190,12 +191,12 @@ int Player_Draw() {
 		//上下
 		if (drct == E_Drct_Up || drct == E_Drct_Down)
 		{
-			Player_Animetion = count_y / 8 % 3;   //画像のアニメーション用の変数 y
+			Player_Animetion = count_y / 16 % 3;   //画像のアニメーション用の変数 y
 		}
 		//左右
 		if (drct == E_Drct_Right || drct == E_Drct_Left)
 		{
-			Player_Animetion = count_x / 8 % 3;   //画像のアニメーション用の変数 x
+			Player_Animetion = count_x / 16 % 3;   //画像のアニメーション用の変数 x
 		}
 
 		//上
@@ -229,15 +230,13 @@ int Player_Draw() {
 	}
 	//デバッグ
 	SetFontSize(18);
-	DrawFormatString(700, 20, GetColor(255, 0, 0), "0:上 1:右 2:下 3:左 4 :止まる");
+	DrawFormatString(700, 20, GetColor(255, 0, 0), "1:上 2:右 3:下 4 :左 0:止まる ");
 	DrawFormatString(700, 40, GetColor(255, 0, 0), "Drct:%d", drct);
 	DrawFormatString(700, 60, GetColor(255, 0, 0), "x = %d   y = %d", player.x,player.y);
 	DrawFormatString(700, 80, GetColor(255, 0, 0), "nx = %d   ny = %d", player.nx,player.ny);
 	DrawFormatString(700, 100, GetColor(255, 0, 0), "MoveFlg:%d", Move_Flg);
 	DrawFormatString(700, 120, GetColor(255, 0, 0), "count_x:%d  count_y:%d", count_x,count_y);
 	
-	//DrawBox(enemy_x, enemy_y, enemy_x+50, enemy_y+50, GetColor(255, 0, 0), true);
-	//DrawBox(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, player.x * MAP_SIZE + count_x + 30,player.y * MAP_SIZE + count_y + 30, GetColor(255, 0, 0), true);
 	return 0;
 }
 
