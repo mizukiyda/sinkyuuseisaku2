@@ -151,8 +151,7 @@ int Player_Move() {
 		break;
 		//â∫
 	case E_Drct_Down:
-			count_y
-				++;
+			count_y++;
 		break;
 		//ç∂
 	case E_Drct_Left:

@@ -1,6 +1,6 @@
 #ifndef INCLUDE_ENEMY
 #define INCLUDE_ENEMY
-#define  EnemyCount 1
+#define  EnemyCount 4
 extern int Enemy_Pos_Init_x();
 extern int Enemy_Pos_Init_y();
 extern int Enemy_Move0();
