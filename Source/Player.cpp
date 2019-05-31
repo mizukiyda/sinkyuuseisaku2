@@ -40,7 +40,7 @@ int Player_Init() {
 	//画像の取得
 	Player[12] = {};
 	LoadDivGraph("Resource/Image/Player1.png", 12, 3, 4, 48, 48,Player);  //配列「Player」へ画像を入れる
-	None = 7;					//正面を向いている状態
+	None = 1;					//正面を向いている状態
 	Player_Animetion = 0;		//何もしていない状態
 
 	//移動
@@ -201,26 +201,26 @@ int Player_Draw() {
 		//上
 		if (drct == E_Drct_Up)
 		{
-			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[0 + Player_Animetion], TRUE);
-			None = 1;
+			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[9 + Player_Animetion], TRUE);
+			None = 10;
 		}
 		//右
 		if (drct == E_Drct_Right)
 		{
-			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[3 + Player_Animetion], TRUE);
-			None = 4;
+			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[6 + Player_Animetion], TRUE);
+			None = 7;
 		}
 		//下
 		if (drct == E_Drct_Down)
 		{
-			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[6 + Player_Animetion], TRUE);
-			None = 7;
+			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[0 + Player_Animetion], TRUE);
+			None = 1;
 		}
 		//左
 		if (drct == E_Drct_Left)
 		{
-			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[9 + Player_Animetion], TRUE);
-			None = 10;
+			DrawGraph(player.x * MAP_SIZE + count_x, player.y * MAP_SIZE + count_y, Player[3 + Player_Animetion], TRUE);
+			None = 4;
 		}
 	}
 
