@@ -2,7 +2,7 @@
 #define INCLUDED_MAP
 
 
-#define MAP_SIZE	64			// マップチップ一つのドットサイズ
+#define MAP_SIZE	48			// マップチップ一つのドットサイズ
 #define MAP_WIDTH	23			// マップの幅
 #define MAP_HEIGHT	12			// マップの縦長さ
 
