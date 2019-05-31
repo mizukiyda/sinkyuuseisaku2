@@ -3,7 +3,6 @@
 #define  EnemyCount 4
 extern int Enemy_Pos_Init_x();
 extern int Enemy_Pos_Init_y();
-extern int Enemy_Move0();
 extern int Enemy_Move1();
 extern int Enemy_Move2();
 extern int Enemy_Move3();
@@ -12,6 +11,9 @@ extern int Enemy_Init();
 extern int Enemy_Dpct();
 extern int Enemy_Draw();
 extern int Enemy_End();
+
+extern int Enemy_Move();
+
 
 
 typedef struct {	//\‘¢‘Ì

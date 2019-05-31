@@ -64,24 +64,20 @@ int Enemy_Dpct() {
 				//ã
 			case E_Drct_Up:						//Œü‚«‚ªã‚È‚ç(1)
 				Count_y--;						//ƒkƒ‹ƒkƒ‹“®‚©‚·
-				Enemy_ny--;
 				break;
 				//¶
 			case E_Drct_Left:					//Œü‚«‚ª¶‚È‚ç(4)
 				Count_x--;						//ƒkƒ‹ƒkƒ‹“®‚©‚·
-				Enemy_nx--;
 				break;
 
 				//‰º
 			case E_Drct_Down:					//Œü‚«‚ª‰º‚È‚ç(3)
 				Count_y++;						//ƒkƒ‹ƒkƒ‹“®‚©‚·
-				Enemy_ny++;
 				break;
 
 				//‰E
 			case E_Drct_Right:					//Œü‚«‚ª‰E‚È‚ç(2)
 				Count_x++;						//ƒkƒ‹ƒkƒ‹“®‚©‚·
-				Enemy_nx++;
 				break;
 
 				//~‚Ü‚é
@@ -89,6 +85,18 @@ int Enemy_Dpct() {
 
 				break;
 
+			}
+			if (Drct == E_Drct_Up) {
+				Enemy_ny--;
+			}
+			if (Drct == E_Drct_Down) {
+				Enemy_ny++;
+			}
+			if (Drct == E_Drct_Right) {
+				Enemy_nx++;
+			}
+			if (Drct == E_Drct_Left) {
+				Enemy_nx--;
 			}
 			//Count_x‚©Count_y‚ÌƒJƒEƒ“ƒg‚ª}64‚ğ’B‚µ‚½‚È‚ç@
 			if (Count_x >= MAP_SIZE - 1 || Count_y <= -MAP_SIZE + 1 || Count_x <= -MAP_SIZE + 1 || Count_y >= MAP_SIZE - 1) {
@@ -135,7 +143,7 @@ int Enemy_Dpct() {
 						Drct = (E_Drct)GetRand(4);					//iƒLƒƒƒXƒg‰‰Zj0`4‚Ü‚Å‚Ì”š‚ÅŒü‚«‚ğƒ‰ƒ“ƒ_ƒ€‚É‘ã“ü‚·‚é
 					}
 				}*/
-				Drct = E_Drct_Stop;
+				E_Move_Flg = false;
 			}
 		}
 	}
@@ -143,7 +151,7 @@ int Enemy_Dpct() {
 }
 
 //Enemy‚ÌˆÚ“®‚ğˆê‚Âˆê‚ÂŠÖ”‚ÅŠÇ—‚·‚é
-int Enemy_Move0() {
+int Enemy_Move() {
 	//if()
 	return 0;
 
