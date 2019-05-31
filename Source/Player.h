@@ -10,7 +10,6 @@ extern int Player_End();
  int Player_Move();
  int Player_Pos_Init_x();
  int Player_Pos_Init_y();
- int Player_Change();
 
 typedef struct {
 	int x;		//Œ»İˆÊ’u
@@ -24,5 +23,6 @@ typedef enum {
 	P_Object_Load,      //•à‚¯‚éêŠ
 	P_Object_Goal,      //ƒS[ƒ‹
 }P_Object;	//•¨‘Ì
+
 
 #endif

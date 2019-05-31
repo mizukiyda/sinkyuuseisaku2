@@ -39,7 +39,7 @@ int Player_Init() {
 
 	//画像の取得
 	Player[12] = {};
-	LoadDivGraph("Resource/Image/Player.png", 12, 3, 4, 64, 64,Player);  //配列「Player」へ画像を入れる
+	LoadDivGraph("Resource/Image/Player1.png", 12, 3, 4, 48, 48,Player);  //配列「Player」へ画像を入れる
 	None = 7;					//正面を向いている状態
 	Player_Animetion = 0;		//何もしていない状態
 
