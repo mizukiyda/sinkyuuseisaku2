@@ -12,12 +12,15 @@ int Menu_OnActive;
 int Menu_x;
 int Menu_y;
 
+int Menu_Flg;
+
 int UI_Init() {
 	//ここで初期化をする
 	//画像の読み込み
 	ImageMenu = LoadGraph("resource/Image/STR.png");
 	Menu_OnActive = false;  //画像非表示
 
+	Menu_Flg = false;
 	return 0;
 }
 
@@ -30,22 +33,24 @@ int UI_Dpct() {
 	if (Menu_OnActive == false) {
 		if (Keyboard_Get(KEY_INPUT_M) == 1) {
 			Menu_OnActive = true;	//画像表示
+			Menu_Flg = true;
 		}
 	}
 	else
 	{
 		if (Keyboard_Get(KEY_INPUT_M) == 1) {
 			Menu_OnActive = false;	//画像表示
+			Menu_Flg = false;
 		}
 	}
-
-
-
-
 
 	return 0;
 }
 
+int UI_Flg() {
+
+	return Menu_Flg;
+}
 int UI_Draw() {
 	//ここで描写
 	//こっちも毎フレーム呼ばれますが計算とは別に書きます
