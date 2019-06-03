@@ -45,6 +45,8 @@ void Scene_Mgr_Dpct() {
 	case E_Scene_GameScene:
 		RPG_Dpct();
 		break;
+	case E_Scene_Menu:
+		break;
 	case E_Scene_Result:
 		Result_Dpct();
 		break;
@@ -73,6 +75,10 @@ void Scene_Mgr_Draw() {
 	case E_Scene_GameScene:
 		RPG_Draw();
 		break;
+
+	case E_Scene_Menu:
+		break;
+
 	case E_Scene_Result:
 		Result_Draw();
 		break;
@@ -110,6 +116,10 @@ static void Scene_Mgr_Init_Module(E_Scene scene) {
 	case E_Scene_GameScene:
 		RPG_Init();
 		break;
+
+	case E_Scene_Menu:
+		break;
+
 	case E_Scene_Result:
 		Result_Init();
 		break;
@@ -138,6 +148,10 @@ static void Scene_Mgr_End_Module(E_Scene scene) {
 	case E_Scene_GameScene:
 		RPG_End();
 		break;
+
+	case E_Scene_Menu:
+		break;
+
 	case E_Scene_Result:
 		Result_End();
 		break;

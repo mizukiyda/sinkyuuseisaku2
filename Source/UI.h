@@ -6,3 +6,4 @@ extern int UI_Dpct();
 extern int UI_Draw();
 extern int UI_End();
 
+int UI_Flg();

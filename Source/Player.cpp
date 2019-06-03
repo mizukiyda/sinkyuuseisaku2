@@ -4,6 +4,7 @@
 #include "Keyboard.h"
 #include"Enemy.h"
 #include"Scene_Mgr.h"
+#include"UI.h"
 
 //ループ用
 static int i, j, k;
@@ -25,9 +26,12 @@ int count_y;		//Mapサイズのカウント(y)
 int enemy_x;
 int enemy_y;
 
+//歩数カウント
+int count;
+
 //Playerのフラグ
 int Move_Flg;			//Playerが動いるいるかどうかのフラグ
-int Player_Hit_Flg;		//PlayerがEnemyと当たったかどうかのフラグ
+int menu_flg;			//メニューを開いているかどうかのフラグ
 
 int Player_Init() {
 
@@ -49,9 +53,13 @@ int Player_Init() {
 	Move_Flg = false;
 	drct = E_Drct_Stop;
 
-	//当たり判定
-	Player_Hit_Flg = false;
+	//歩数カウントの初期化
+	count = 0;
 
+	//当たり判定
+
+	//めにゅー フラグ
+	menu_flg = false;
 	return 0;
 }
 
@@ -65,60 +73,67 @@ int Player_Dpct() {
 	enemy_y[i] = Enmey_Pos_Init_y(i);
 	}*/
 
-	if (Move_Flg == false) {
-		player.nx = player.x;
-		player.ny = player.y;
-		//上
-		if (Keyboard_Get(KEY_INPUT_UP) == 1)   //↑
-		{
-			player.ny--;
-			drct = E_Drct_Up;
-		}
-		//右
-		if (Keyboard_Get(KEY_INPUT_RIGHT) == 1) //→
-		{
-			player.nx++;
-			drct = E_Drct_Right;
-		}
-		//下
-		if (Keyboard_Get(KEY_INPUT_DOWN) == 1)  //↓
-		{
-			player.ny++;
-			drct = E_Drct_Down;
-		}
-		//左
-		if (Keyboard_Get(KEY_INPUT_LEFT) == 1)  //←
-		{
-			player.nx--;
-			drct = E_Drct_Left;
-		}
+	menu_flg = UI_Flg();
 
-		//エンターキーを押したらResultSceneへ（デバッグ用）
-		if (Keyboard_Get(KEY_INPUT_RETURN) == 1) //→
-		{
-			Scene_Mgr_ChangeScene(E_Scene_Result);
-		}
+	if (menu_flg == false) {		//メニューを開いていたら歩けない
 
-		//Playerの移動先のチェック（壁か道か）
-		if (drct != E_Drct_Stop)	//キーが入力されているなら(止まっていないなら)
-		{
-			Player_Check();
-		}
+		if (Move_Flg == false) {
+			player.nx = player.x;
+			player.ny = player.y;
+			//上
+			if (Keyboard_Get(KEY_INPUT_UP) == 1)   //↑
+			{
+				player.ny--;
+				drct = E_Drct_Up;
+				count++;
+			}
+			//右
+			if (Keyboard_Get(KEY_INPUT_RIGHT) == 1) //→
+			{
+				player.nx++;
+				drct = E_Drct_Right;
+				count++;
+			}
+			//下
+			if (Keyboard_Get(KEY_INPUT_DOWN) == 1)  //↓
+			{
+				player.ny++;
+				drct = E_Drct_Down;
+				count++;
+			}
+			//左
+			if (Keyboard_Get(KEY_INPUT_LEFT) == 1)  //←
+			{
+				player.nx--;
+				drct = E_Drct_Left;
+				count++;
+			}
 
-		//移動させる
-		if (Move_Flg == true) {		//移動先が道だった時
-			Player_Move();
-		}
-	}
+			//エンターキーを押したらResultSceneへ（デバッグ用）
+			if (Keyboard_Get(KEY_INPUT_RETURN) == 1) //→
+			{
+				Scene_Mgr_ChangeScene(E_Scene_Result);
+			}
 
-	//当たり判定
-	if (player.x >= enemy_x && player.x + 50 <= enemy_x + 50 && player.y <= enemy_y && player.y + 50 >= enemy_y + 50) {
-		Player_Hit_Flg = true;
+			//Playerの移動先のチェック（壁か道か）
+			if (drct != E_Drct_Stop)	//キーが入力されているなら(止まっていないなら)
+			{
+				Player_Check();
+			}
+
+			//移動させる
+			if (Move_Flg == true) {		//移動先が道だった時
+				Player_Move();
+			}
+		}
+	}		
+
+
+
+	if (count == 15) {
 		Scene_Mgr_ChangeScene(E_Scene_GameScene);
-	}
-	else
-	{
-		Player_Hit_Flg = false;
+		count = 0;
+
 	}
 	return 0;
 }
@@ -224,9 +239,7 @@ int Player_Draw() {
 		}
 	}
 
-	if (Player_Hit_Flg == true) {
-		DrawFormatString(700, 140, GetColor(255, 0, 0), "当たった");
-	}
+
 	//デバッグ
 	SetFontSize(18);
 	DrawFormatString(700, 20, GetColor(255, 0, 0), "1:上 2:右 3:下 4 :左 0:止まる ");
